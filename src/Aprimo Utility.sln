@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Web", "..\Aprimo.Utility.Web\Aprimo.Utility.Web.csproj", "{5D19BB60-5C9F-4A19-A242-3B3DEB0D91BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Web", "Aprimo.Utility.Web\Aprimo.Utility.Web.csproj", "{5D19BB60-5C9F-4A19-A242-3B3DEB0D91BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
