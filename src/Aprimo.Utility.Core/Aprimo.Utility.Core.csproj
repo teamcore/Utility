@@ -39,7 +39,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Groups\Group.cs" />
+    <Compile Include="Model\Parameters\IParameterFactory.cs" />
+    <Compile Include="Model\Parameters\Parameter.cs" />
+    <Compile Include="Model\Parameters\ParameterFactory.cs" />
+    <Compile Include="Model\Projects\IProjectFactory.cs" />
+    <Compile Include="Model\Projects\Project.cs" />
+    <Compile Include="Model\Projects\ProjectFactory.cs" />
+    <Compile Include="Model\Ranges\IRangeFactory.cs" />
+    <Compile Include="Model\Ranges\Range.cs" />
+    <Compile Include="Model\Ranges\RangeFactory.cs" />
+    <Compile Include="Model\Resources\Resource.cs" />
+    <Compile Include="Model\Resources\Term.cs" />
+    <Compile Include="Model\Tabs\Tab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aprimo.Utility.Framework\Aprimo.Utility.Framework.csproj">
+      <Project>{9d0f6e7b-b4df-4242-b5a5-d66a33efbdd7}</Project>
+      <Name>Aprimo.Utility.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

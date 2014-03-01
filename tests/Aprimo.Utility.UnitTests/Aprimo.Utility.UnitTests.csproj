@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\src\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\src\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\..\src\packages\FluentAssertions.2.2.0.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.core">
       <HintPath>..\..\src\packages\NUnitTestAdapter.1.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -49,8 +58,13 @@
       <HintPath>..\..\src\packages\NUnitTestAdapter.1.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\src\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,10 +72,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\RangeTest.cs" />
+    <Compile Include="Core\ParameterTest.cs" />
+    <Compile Include="Data\ProjectRepositoryTest.cs" />
+    <Compile Include="Helper\PersistenceTest.cs" />
+    <Compile Include="Helper\RepositoryTest.cs" />
+    <Compile Include="Helper\SchemaTest.cs" />
+    <Compile Include="Helper\TestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Aprimo.Utility.Application\Aprimo.Utility.Application.csproj">
+      <Project>{0d59607a-74cf-493e-a99f-56651940446d}</Project>
+      <Name>Aprimo.Utility.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Aprimo.Utility.Core\Aprimo.Utility.Core.csproj">
+      <Project>{bb88feca-ec5f-40d3-95a7-7656c243d666}</Project>
+      <Name>Aprimo.Utility.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Aprimo.Utility.Data\Aprimo.Utility.Data.csproj">
+      <Project>{4d3ccda0-e67e-4ff1-8e29-37b93cbc3a76}</Project>
+      <Name>Aprimo.Utility.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Aprimo.Utility.Framework\Aprimo.Utility.Framework.csproj">
+      <Project>{9d0f6e7b-b4df-4242-b5a5-d66a33efbdd7}</Project>
+      <Name>Aprimo.Utility.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Aprimo.Utility.Web\Aprimo.Utility.Web.csproj">
+      <Project>{3bb38eda-8747-4dc4-8d17-6c355469c555}</Project>
+      <Name>Aprimo.Utility.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

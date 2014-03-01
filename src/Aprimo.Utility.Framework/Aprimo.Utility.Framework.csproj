@@ -30,8 +30,74 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.3.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc5.3.2.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Security">
+      <HintPath>..\packages\clrsecurity\Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Security.Cryptography">
+      <HintPath>..\packages\clrsecurity\Security.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.1\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.1\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.1\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.1\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +105,147 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDomainTypeFinder.cs" />
+    <Compile Include="Caching\CacheExtensions.cs" />
+    <Compile Include="Caching\ICacheProvider.cs" />
+    <Compile Include="Caching\IEnumerableExtensions.cs" />
+    <Compile Include="Caching\MemoryCacheProvider.cs" />
+    <Compile Include="Caching\NullCacheProvider.cs" />
+    <Compile Include="Caching\PerRequestCacheProvider.cs" />
+    <Compile Include="Caching\TypeChangeMonitor.cs" />
+    <Compile Include="Common\GenericComparer.cs" />
+    <Compile Include="Common\GenericListTypeConverter.cs" />
+    <Compile Include="Common\IPagedList.cs" />
+    <Compile Include="Common\IPersistentCollection.cs" />
+    <Compile Include="Common\PagedList.cs" />
+    <Compile Include="Common\PersistentCollection.cs" />
+    <Compile Include="Common\WriteLockDisposable.cs" />
+    <Compile Include="Constant\GlobalConstant.cs" />
+    <Compile Include="Data\Contract\IRepository.cs" />
+    <Compile Include="Data\Contract\IUnitOfWork.cs" />
+    <Compile Include="Data\EntityMapping.cs" />
+    <Compile Include="Dependency\DependencyManager.cs" />
+    <Compile Include="Dependency\IDependencyManager.cs" />
+    <Compile Include="DomainModel\BaseObject.cs" />
+    <Compile Include="DomainModel\BaseObjectEqualityComparer.cs" />
+    <Compile Include="DomainModel\Commands\CommandBase.cs" />
+    <Compile Include="DomainModel\Commands\CommandHandlerBase.cs" />
+    <Compile Include="DomainModel\Commands\CommandHandlerNotFoundException.cs" />
+    <Compile Include="DomainModel\Commands\CommandProcessor.cs" />
+    <Compile Include="DomainModel\Commands\ICommand.cs" />
+    <Compile Include="DomainModel\Commands\ICommandHandler.cs" />
+    <Compile Include="DomainModel\Commands\ICommandProcessor.cs" />
+    <Compile Include="DomainModel\Commands\IDomainRightCommand.cs" />
+    <Compile Include="DomainModel\Commands\IMenuCommand.cs" />
+    <Compile Include="DomainModel\Commands\MenuCommandBase.cs" />
+    <Compile Include="DomainModel\Counter\CounterUtility.cs" />
+    <Compile Include="DomainModel\Counter\Identity.cs" />
+    <Compile Include="DomainModel\Counter\ResetOption.cs" />
+    <Compile Include="DomainModel\DomainSignatureAttribute.cs" />
+    <Compile Include="DomainModel\Entity.cs" />
+    <Compile Include="DomainModel\EntityWithTypedId.cs" />
+    <Compile Include="DomainModel\Events\DomainEvents.cs" />
+    <Compile Include="DomainModel\Events\IDomainEvent.cs" />
+    <Compile Include="DomainModel\Events\IHandles.cs" />
+    <Compile Include="DomainModel\IEntity.cs" />
+    <Compile Include="DomainModel\IEntityWithTypedId.cs" />
+    <Compile Include="DomainModel\IHasAssignedId.cs" />
+    <Compile Include="DomainModel\IUniqueKeyGenerator.cs" />
+    <Compile Include="DomainModel\ValidatableObject.cs" />
+    <Compile Include="DomainModel\ValueObject.cs" />
+    <Compile Include="EngineContext.cs" />
+    <Compile Include="EnumKeyValue.cs" />
+    <Compile Include="EventBroker.cs" />
+    <Compile Include="Events\DomainEvents.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IHandles.cs" />
+    <Compile Include="Exceptions\CounterNotFoundException.cs" />
+    <Compile Include="Exceptions\FunctionalException.cs" />
+    <Compile Include="Exceptions\RSACryptoException.cs" />
+    <Compile Include="Exceptions\TechnicalException.cs" />
+    <Compile Include="Extension\CollectionTExtensions.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Fakes\FakeHttpContext.cs" />
+    <Compile Include="Fakes\FakeHttpRequest.cs" />
+    <Compile Include="Fakes\FakeHttpResponse.cs" />
+    <Compile Include="Fakes\FakeHttpSessionState.cs" />
+    <Compile Include="Fakes\FakeIdentity.cs" />
+    <Compile Include="Fakes\FakePrincipal.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\DataHelper.cs" />
+    <Compile Include="Helper\DateTimeHelper.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
+    <Compile Include="Helper\NumericHelper.cs" />
+    <Compile Include="Helper\ReflectionHelper.cs" />
+    <Compile Include="Helper\SecurityHelper.cs" />
+    <Compile Include="Helper\Serializer.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
+    <Compile Include="IEngine.cs" />
+    <Compile Include="IO\FileSystemSettings.cs" />
+    <Compile Include="IO\FileSystemStorageProvider.cs" />
+    <Compile Include="IO\IStorageFile.cs" />
+    <Compile Include="IO\IStorageFolder.cs" />
+    <Compile Include="IO\IStorageProvider.cs" />
+    <Compile Include="IO\StorageStartupTask.cs" />
+    <Compile Include="ITypeFinder.cs" />
+    <Compile Include="IWebHelper.cs" />
+    <Compile Include="Logger\DefaultLogger.cs" />
+    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Logger\Log.cs" />
+    <Compile Include="Logger\LogLevel.cs" />
+    <Compile Include="Logger\NullLogger.cs" />
+    <Compile Include="Mvc\BaseEntityModel.cs" />
+    <Compile Include="Mvc\BaseModel.cs" />
+    <Compile Include="Notifications\EmailAccount.cs" />
+    <Compile Include="Notifications\EmailSender.cs" />
+    <Compile Include="Notifications\IEmailSender.cs" />
+    <Compile Include="Notifications\QueuedEmail.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\EncodingHelper.cs" />
+    <Compile Include="Security\EncryptedPayload.cs" />
+    <Compile Include="Security\JsonWebEncryptedToken.cs" />
+    <Compile Include="Security\JsonWebToken.cs" />
+    <Compile Include="Security\KeyIssuer.cs" />
+    <Compile Include="Security\RelyingParty.cs" />
+    <Compile Include="Security\SecurityHelper.cs" />
+    <Compile Include="Security\TokenIssuer.cs" />
+    <Compile Include="Settings\Config.cs" />
+    <Compile Include="Settings\ConfigurationProvider.cs" />
+    <Compile Include="Settings\IConfigurationProvider.cs" />
+    <Compile Include="Settings\ISetting.cs" />
+    <Compile Include="Settings\ISettingService.cs" />
+    <Compile Include="Settings\Setting.cs" />
+    <Compile Include="Settings\SettingService.cs" />
+    <Compile Include="Singleton.cs" />
+    <Compile Include="Tasks\IScheduleTaskService.cs" />
+    <Compile Include="Tasks\IStartupTask.cs" />
+    <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="Tasks\ScheduleTask.cs" />
+    <Compile Include="Tasks\ScheduleTaskService.cs" />
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\TaskManager.cs" />
+    <Compile Include="Tasks\TaskThread.cs" />
+    <Compile Include="Tasks\TaskType.cs" />
+    <Compile Include="WebEngine.cs" />
+    <Compile Include="WebHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="obj\Debug\Aprimo.Utility.Framework.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\Aprimo.Utility.Framework.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Aprimo.Utility.Framework.dll" />
+    <Content Include="obj\Debug\Aprimo.Utility.Framework.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
