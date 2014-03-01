@@ -3,16 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Web", "Aprimo.Utility.Web\Aprimo.Utility.Web.csproj", "{3BB38EDA-8747-4DC4-8D17-6C355469C555}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Core", "Aprimo.Utility.Core\Aprimo.Utility.Core.csproj", "{BB88FECA-EC5F-40D3-95A7-7656C243D666}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Framework", "Aprimo.Utility.Framework\Aprimo.Utility.Framework.csproj", "{9D0F6E7B-B4DF-4242-B5A5-D66A33EFBDD7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Data", "Aprimo.Utility.Data\Aprimo.Utility.Data.csproj", "{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.Application", "Aprimo.Utility.Application\Aprimo.Utility.Application.csproj", "{0D59607A-74CF-493E-A99F-56651940446D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 View", "01 View", "{43A0EBB5-5FBA-4E2D-B286-DCF00AB07500}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Domain", "02 Domain", "{633B3388-983E-458A-B522-28995CE26875}"
@@ -21,12 +11,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Infrastructure", "03 Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Test", "04 Test", "{3800D2B5-26F4-4AD0-89C2-DE5D7688D809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aprimo.Utility.UnitTests", "..\tests\Aprimo.Utility.UnitTests\Aprimo.Utility.UnitTests.csproj", "{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{48617B10-9C37-493D-8996-691E1A538DE7}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ns.Utility.Web", "Ns.Utility.Web\Ns.Utility.Web.csproj", "{3BB38EDA-8747-4DC4-8D17-6C355469C555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ns.Utility.Core", "Ns.Utility.Core\Ns.Utility.Core.csproj", "{BB88FECA-EC5F-40D3-95A7-7656C243D666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ns.Utility.Application", "Ns.Utility.Application\Ns.Utility.Application.csproj", "{0D59607A-74CF-493E-A99F-56651940446D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ns.Utility.Framework", "Ns.Utility.Framework\Ns.Utility.Framework.csproj", "{9D0F6E7B-B4DF-4242-B5A5-D66A33EFBDD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ns.Utility.Data", "Ns.Utility.Data\Ns.Utility.Data.csproj", "{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ns.Utility.UnitTests", "..\tests\Ns.Utility.UnitTests\Ns.Utility.UnitTests.csproj", "{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +42,10 @@ Global
 		{BB88FECA-EC5F-40D3-95A7-7656C243D666}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB88FECA-EC5F-40D3-95A7-7656C243D666}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB88FECA-EC5F-40D3-95A7-7656C243D666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D59607A-74CF-493E-A99F-56651940446D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D59607A-74CF-493E-A99F-56651940446D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D59607A-74CF-493E-A99F-56651940446D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D59607A-74CF-493E-A99F-56651940446D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D0F6E7B-B4DF-4242-B5A5-D66A33EFBDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D0F6E7B-B4DF-4242-B5A5-D66A33EFBDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D0F6E7B-B4DF-4242-B5A5-D66A33EFBDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,10 +54,6 @@ Global
 		{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D59607A-74CF-493E-A99F-56651940446D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D59607A-74CF-493E-A99F-56651940446D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D59607A-74CF-493E-A99F-56651940446D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D59607A-74CF-493E-A99F-56651940446D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,10 +64,10 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3BB38EDA-8747-4DC4-8D17-6C355469C555} = {43A0EBB5-5FBA-4E2D-B286-DCF00AB07500}
-		{0D59607A-74CF-493E-A99F-56651940446D} = {633B3388-983E-458A-B522-28995CE26875}
 		{BB88FECA-EC5F-40D3-95A7-7656C243D666} = {633B3388-983E-458A-B522-28995CE26875}
-		{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76} = {14C397E1-8782-4732-A550-D16E94ECE2B0}
+		{0D59607A-74CF-493E-A99F-56651940446D} = {633B3388-983E-458A-B522-28995CE26875}
 		{9D0F6E7B-B4DF-4242-B5A5-D66A33EFBDD7} = {14C397E1-8782-4732-A550-D16E94ECE2B0}
+		{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76} = {14C397E1-8782-4732-A550-D16E94ECE2B0}
 		{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C} = {3800D2B5-26F4-4AD0-89C2-DE5D7688D809}
 	EndGlobalSection
 EndGlobal
