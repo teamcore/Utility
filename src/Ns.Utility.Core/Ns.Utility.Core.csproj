@@ -7,8 +7,8 @@
     <ProjectGuid>{BB88FECA-EC5F-40D3-95A7-7656C243D666}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aprimo.Utility.Core</RootNamespace>
-    <AssemblyName>Aprimo.Utility.Core</AssemblyName>
+    <RootNamespace>Ns.Utility.Core</RootNamespace>
+    <AssemblyName>Ns.Utility.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Groups\Group.cs" />
+    <Compile Include="Model\Membership\ApplicationSettings.cs" />
+    <Compile Include="Model\Membership\ApplicationStartupTask.cs" />
+    <Compile Include="Model\Membership\IUserFactory.cs" />
+    <Compile Include="Model\Membership\User.cs" />
+    <Compile Include="Model\Membership\UserFactory.cs" />
     <Compile Include="Model\Parameters\IParameterFactory.cs" />
     <Compile Include="Model\Parameters\Parameter.cs" />
     <Compile Include="Model\Parameters\ParameterFactory.cs" />

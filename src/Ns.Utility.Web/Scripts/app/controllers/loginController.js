@@ -3,14 +3,15 @@
     var appModule = angular.module('mainApp');
     appModule.controller('loginController', ['$scope', '$location', 'authentication', function ($scope, $location, authentication) {
 
+        $scope.User = {};
         $scope.LoginModel = {};
 
-        $scope.reset = function () {
-            $scope.LoginModel = {};
+        $scope.init = function () {
+            $scope.User = angular.copy($scope.LoginModel);
         };
 
-        $scope.submit = function (login) {
-            authentication.authenticate(login, loginSuccess, loginErrorr);
+        $scope.login = function () {
+            authentication.authenticate($scope.LoginModel, loginSuccess, loginErrorr);
         };
 
         $scope.cancel = function () {
@@ -18,9 +19,12 @@
             $location.path('/');
         };
 
+        $scope.reset = function () {
+            $scope.LoginModel = {};
+        };
+
         $scope.isDirty = function (login) {
-            var areEqual = angular.equals(login, $scope.LoginModel);
-            return false;
+            return angular.equals(login, $scope.User);
         };
 
         var loginSuccess = function () {
@@ -30,6 +34,8 @@
         var loginErrorr = function () {
 
         };
+
+        $scope.init();
 
     }]);
 

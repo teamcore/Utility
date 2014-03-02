@@ -16,6 +16,28 @@ textarea {
     max-width: 280px;
 }
 
+.login-box {
+    margin-top: 25vh;
+}
+
+.login-form {
+    margin-top: 5%;
+}
+
+.footer-bar
+{
+    height: 20px;
+    max-height: 35px;
+    color: #ffffff;
+}
+
+.footer-bar p
+{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 10px;
+}
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;

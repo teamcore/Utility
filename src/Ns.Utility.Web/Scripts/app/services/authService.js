@@ -11,6 +11,7 @@
                 if (successCallback) {
                     successCallback();
                 }
+                $window.location.reload();
             }).error(function (data, status, headers, config) {
                 delete $window.sessionStorage.Token;
                 delete $window.sessionStorage.Name;
@@ -19,6 +20,12 @@
                 }
             });
 
+        };
+
+        factory.logout = function () {
+            delete $window.sessionStorage.Token;
+            delete $window.sessionStorage.Name;
+            $window.location.reload();
         };
 
         return factory;

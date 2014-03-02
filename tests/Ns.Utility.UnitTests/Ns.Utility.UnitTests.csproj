@@ -7,8 +7,8 @@
     <ProjectGuid>{D6FEB364-41A2-4523-A4C4-01DBF5A71F1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aprimo.Utility.UnitTests</RootNamespace>
-    <AssemblyName>Aprimo.Utility.UnitTests</AssemblyName>
+    <RootNamespace>Ns.Utility.UnitTests</RootNamespace>
+    <AssemblyName>Ns.Utility.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

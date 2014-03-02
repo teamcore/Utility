@@ -7,8 +7,8 @@
     <ProjectGuid>{4D3CCDA0-E67E-4FF1-8E29-37B93CBC3A76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aprimo.Utility.Data</RootNamespace>
-    <AssemblyName>Aprimo.Utility.Data</AssemblyName>
+    <RootNamespace>Ns.Utility.Data</RootNamespace>
+    <AssemblyName>Ns.Utility.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

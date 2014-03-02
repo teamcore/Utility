@@ -1,7 +1,7 @@
 ﻿<div class="row" ng-controller="loginController">
-    <div class="col-md-6 col-md-offset-3 login-box">
+    <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 login-box">
         <div class="well well-lg">
-            <form class="form-horizontal login-form" role="form" novalidate>
+            <form class="form-horizontal login-form" role="form" ng-submit="login()" novalidate>
                 <div class="form-group">
                     <label for="userName" class="col-md-3 control-label">User Name</label>
                     <div class="col-md-7">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <div class="col-md-offset-3 col-md-7">
                         <div class="checkbox">
                             <label>
@@ -25,10 +25,10 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-7">
-                        <button ng-click="submit(LoginModel)" ng-disabled="form.$invalid || isDirty(LoginModel)" class=" btn btn-default">Sign in</button>
+                        <button type="submit" ng-disabled="form.$invalid || isDirty(LoginModel)" class=" btn btn-default">Sign in</button>
                         <button ng-click="cancel()" class="btn btn-default">Cancel</button>
                     </div>
                 </div>
