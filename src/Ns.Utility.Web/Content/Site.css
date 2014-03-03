@@ -9,12 +9,12 @@
     padding-right: 15px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Set width on the form input elements since they're 100% wide by default 
 input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 .login-box {
     margin-top: 25vh;
@@ -29,6 +29,11 @@ textarea {
     height: 20px;
     max-height: 35px;
     color: #ffffff;
+}
+
+.form-top
+{
+    margin-top: 4%;
 }
 
 .footer-bar p
