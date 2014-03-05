@@ -8,7 +8,7 @@ namespace Ns.Utility.Core.Model.Membership
         {
             return new ApplicationSettings
             {
-                AppTitle = "Smart Society",
+                AppTitle = "Aprimo Utility Application",
                 MaxInvalidLoginAttemptCount = 3,
                 DefaultPageTitle = "Index",
                 DefaultMetaKeywords = "Nirajan Singh",
