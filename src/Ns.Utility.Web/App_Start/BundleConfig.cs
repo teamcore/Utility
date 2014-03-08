@@ -14,11 +14,12 @@ namespace Ns.Utility.Web
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-{version}.js"));
+                        "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
@@ -37,6 +38,8 @@ namespace Ns.Utility.Web
                 "~/Scripts/app/services/*.js",
                 "~/Scripts/app/controllers/*.js"));
 
+            bundles.Add(new ScriptBundle("~/bundlers/firebase").Include("~/Scripts/firebase.js", "~/Scripts/angularfire.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Scripts/angular-csp.css",
@@ -44,12 +47,6 @@ namespace Ns.Utility.Web
                       "~/Content/select2.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));
-
-#if DEBUG
-            BundleTable.EnableOptimizations = false;
-#else
-            BundleTable.EnableOptimizations = true;
-#endif
         }
     }
 }

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en-us" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="mainApp">
+<head>
+    <!--[if lte IE 8]>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-controller="applicationController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li><a href="#/projects">Projects</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="Name"><a href="#/login">Login</a></li>
+                    <li ng-show="Name" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Name}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="logout()" href="#">Logout</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Settings</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+        <footer class="footer-bar">
+            <div class="navbar-inverse navbar-fixed-bottom">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")*@
+    @*@Scripts.Render("~/bundles/angularui")*@
+    @*@Scripts.Render("~/bundlers/firebase")*@
+    @*@Scripts.Render("~/bundles/app")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

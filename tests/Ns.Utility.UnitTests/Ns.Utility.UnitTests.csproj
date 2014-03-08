@@ -102,10 +102,6 @@
       <Project>{9d0f6e7b-b4df-4242-b5a5-d66a33efbdd7}</Project>
       <Name>Ns.Utility.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Ns.Utility.Web\Ns.Utility.Web.csproj">
-      <Project>{3bb38eda-8747-4dc4-8d17-6c355469c555}</Project>
-      <Name>Ns.Utility.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

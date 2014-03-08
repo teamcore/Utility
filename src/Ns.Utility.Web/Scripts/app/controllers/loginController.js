@@ -11,7 +11,7 @@
         };
 
         $scope.login = function () {
-            authentication.authenticate($scope.LoginModel, loginSuccess, loginErrorr);
+            authentication.authenticate($scope.LoginModel);
         };
 
         $scope.cancel = function () {
@@ -25,14 +25,6 @@
 
         $scope.isDirty = function (login) {
             return angular.equals(login, $scope.User);
-        };
-
-        var loginSuccess = function () {
-            $location.path('/');
-        };
-
-        var loginErrorr = function () {
-
         };
 
         $scope.init();
