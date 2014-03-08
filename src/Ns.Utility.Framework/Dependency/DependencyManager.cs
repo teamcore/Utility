@@ -15,7 +15,7 @@ namespace Ns.Utility.Framework.Dependency
         {
             builder.Register<HttpContextBase>(c => { return HttpContext.Current != null ? new HttpContextWrapper(HttpContext.Current) : (FakeHttpContext.Root() as HttpContextBase); });
             builder.RegisterType<AppDomainTypeFinder>().As<ITypeFinder>();
-            builder.RegisterType(typeof(ConfigurationProvider<>)).As(typeof(IConfigurationProvider<>));
+            builder.RegisterGeneric(typeof(ConfigurationProvider<>)).As(typeof(IConfigurationProvider<>));
             builder.RegisterType<SettingService>().As<ISettingService>();
             builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>();
             builder.RegisterType<WebHelper>().As<IWebHelper>();

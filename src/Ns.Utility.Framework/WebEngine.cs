@@ -35,7 +35,6 @@ namespace Ns.Utility.Framework
         public WebEngine(ContainerBuilder builder, IDependencyManager dependencyManager)
         {
             this.Builder = builder;
-            Container = builder.Build();
             this.dependencyManager = dependencyManager;
         }
 
@@ -60,6 +59,7 @@ namespace Ns.Utility.Framework
         public void Initialize(bool databaseIsConfigured)
         {
             dependencyManager.Register(Builder);
+            Container = Builder.Build();
 
             InitializeTaskTypes();
             RunStartupTasks();
