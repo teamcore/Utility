@@ -28,8 +28,7 @@ namespace Ns.Utility.Web
 
             var builder = EngineContext.Current.Builder;
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            var container = builder.Build();
-            var resolver = new AutofacWebApiDependencyResolver(container);
+            var resolver = new AutofacWebApiDependencyResolver(EngineContext.Current.Container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
         }
     }

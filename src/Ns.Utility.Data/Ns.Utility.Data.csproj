@@ -57,6 +57,7 @@
     <Compile Include="Mapping\Core\ResourceMap.cs" />
     <Compile Include="Mapping\Core\TabMap.cs" />
     <Compile Include="Mapping\Core\TermMap.cs" />
+    <Compile Include="Mapping\Core\UserMap.cs" />
     <Compile Include="Mapping\Infrastracure\EmailAccountMap.cs" />
     <Compile Include="Mapping\Infrastracure\LogMap.cs" />
     <Compile Include="Mapping\Infrastracure\QueuedEmailMap.cs" />
@@ -78,9 +79,7 @@
       <Name>Ns.Utility.Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\Membership\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
