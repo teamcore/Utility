@@ -153,6 +153,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Framework\Api\ActionResults\ModelActionResult.cs" />
     <Compile Include="Framework\Api\ApiBaseController.cs" />
     <Compile Include="Framework\Api\Filters\AuthenticateAttribute.cs" />
     <Compile Include="Framework\Api\Filters\CachingFilterAttribute.cs" />
@@ -180,6 +183,9 @@
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponse.cs" />
+    <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserRegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

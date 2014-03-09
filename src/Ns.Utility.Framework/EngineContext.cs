@@ -29,6 +29,11 @@ namespace Ns.Utility.Framework
             return Singleton<IEngine>.Instance;
         }
 
+        public static IContainer Build()
+        {
+            return Current.Build();
+        }
+
         /// <summary>
         /// Resets this instance.
         /// </summary>

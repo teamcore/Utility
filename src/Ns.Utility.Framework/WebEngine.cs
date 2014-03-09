@@ -59,8 +59,11 @@ namespace Ns.Utility.Framework
         public void Initialize(bool databaseIsConfigured)
         {
             dependencyManager.Register(Builder);
-            Container = Builder.Build();
+        }
 
+        public IContainer Build()
+        {
+            Container = Builder.Build();
             InitializeTaskTypes();
             RunStartupTasks();
 
@@ -68,6 +71,8 @@ namespace Ns.Utility.Framework
             {
                 StartScheduledTasks();
             }
+
+            return Container;
         }
 
         /// <summary>

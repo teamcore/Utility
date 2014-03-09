@@ -5,10 +5,16 @@ using Ns.Utility.Framework.DomainModel;
 using Ns.Utility.Framework.Mvc;
 using Ns.Utility.Web.Framework.Api.Filters;
 using Ns.Utility.Web.Framework.Mapper;
+using System.Net.Http;
+using System.Net;
+using Ns.Utility.Web.Framework.Api.ActionResults;
+using System.Collections.Generic;
 
 namespace Ns.Utility.Web.Framework.Api
 {
-    public abstract class ApiBaseController<TEntity, TModel> : ApiController where TEntity : Entity where TModel : BaseEntityModel
+    public abstract class ApiBaseController<TEntity, TModel> : ApiController
+        where TEntity : Entity
+        where TModel : BaseEntityModel
     {
         protected readonly IRepository<TEntity> repository;
         protected readonly ICollectionModelMapper<TEntity, TModel> mapper;
@@ -24,17 +30,19 @@ namespace Ns.Utility.Web.Framework.Api
             this.mapper = mapper;
         }
 
-        public virtual IQueryable<TModel> Get()
+        public virtual IHttpActionResult Get()
         {
             var entities = repository.GetAll().OrderBy(x => x.Id);
-            return mapper.Map(entities).AsQueryable();
+            var models = mapper.Map(entities).AsQueryable();
+            return new ModelActionResult<IEnumerable<TModel>>(models, Request);
         }
 
 
-        public virtual TModel Get(int id)
+        public virtual IHttpActionResult Get(int id)
         {
             var entity = repository.Get(id);
-            return mapper.Map(entity);
+            var model = mapper.Map(entity);
+            return new ModelActionResult<TModel>(model, Request);
         }
 
         [Transaction]
@@ -42,6 +50,8 @@ namespace Ns.Utility.Web.Framework.Api
         {
             var entity = mapper.Map(model);
             repository.Add(entity);
+            //var modelResult = mapper.Map(entity);
+            //return new ModelActionResult<TModel>(modelResult, Request);
         }
 
         [Transaction]
@@ -51,12 +61,15 @@ namespace Ns.Utility.Web.Framework.Api
             var entity = repository.FindOne(x => x.Id == model.Id);
             mapper.Update(updatedEntity, entity);
             repository.Update(entity);
+            //var modelResult = mapper.Map(entity);
+            //return new ModelActionResult<TModel>(modelResult, Request);
         }
 
         [Transaction]
         public virtual void Delete(int id)
         {
             repository.Delete(id);
+            //return new TextActionResult("Deleted successfully.", Request);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
     var appModule = angular.module('mainApp');
-    appModule.controller('profileController', ['$scope', '$location', 'authentication', function ($scope, $location, authentication) {
+    appModule.controller('profileController', ['$scope', '$location', 'profileService', function ($scope, $location, profileService) {
 
         $scope.User = {};
         $scope.UserModel = {};
@@ -10,8 +10,12 @@
             $scope.User = angular.copy($scope.UserModel);
         };
 
-        $scope.login = function () {
-            authentication.authenticate($scope.UserModel);
+        $scope.submit = function (user) {
+            var areEqual = angular.equals(user.Password, user.ConfirmPassword);
+            if (areEqual)
+            {
+                profileService.register(user);
+            }
         };
 
         $scope.cancel = function () {

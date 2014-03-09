@@ -20,16 +20,18 @@ namespace Ns.Utility.Web
         {
             AreaRegistration.RegisterAllAreas();
             EngineContext.Initialize(false, true, new SmartDependencyManager());
-            
+            var builder = EngineContext.Current.Builder;
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            var container = EngineContext.Build();
+            var resolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = resolver;
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var builder = EngineContext.Current.Builder;
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            var resolver = new AutofacWebApiDependencyResolver(EngineContext.Current.Container);
-            GlobalConfiguration.Configuration.DependencyResolver = resolver;
+            
         }
     }
 }

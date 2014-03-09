@@ -21,7 +21,7 @@
             $http.post('api/users', user).success(function (data, status, headers, config) {
                 $window.location.reload();
             }).error(function (data, status, headers, config) {
-                
+                $window.location.reload();
             });
         };
 

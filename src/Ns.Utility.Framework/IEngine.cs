@@ -25,6 +25,8 @@ namespace Ns.Utility.Framework
         /// <param name="databaseIsConfigured">if set to <c>true</c> [database is configured].</param>
         void Initialize(bool databaseIsConfigured);
 
+        IContainer Build();
+
         /// <summary>
         /// Resets this instance.
         /// </summary>
