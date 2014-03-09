@@ -165,7 +165,7 @@ namespace Ns.Utility.Web.Framework.Api.Filters
         private string GetHashedPassword(string username)
         {
             string accessKey = string.Empty;
-            var user = repository.FindOne(x => x.LoginId == username);
+            var user = repository.FindOne(x => x.UserName == username);
             if (user != null)
             {
                 accessKey = user.AccessKey;

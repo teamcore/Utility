@@ -20,16 +20,17 @@ namespace Ns.Utility.Core.Model.Membership
 
         protected User()
         {
-            
+
         }
 
-        internal User(string loginId, string password, string displayName, string accessKey)
+        internal User(string userName, string password, string firstName, string lastName, string accessKey)
         {
             PublicKey = SecurityHelper.GetPublicKey();
             PrivateKey = SecurityHelper.GetPrivateKey();
-            LoginId = loginId;
+            UserName = userName;
             Password = SecurityHelper.Encrypt(password, PublicKey);
-            DisplayName = displayName;
+            FirstName = firstName;
+            LastName = LastName;
             AccessKey = accessKey;
             settings = EngineContext.Current.Resolve<IConfigurationProvider<ApplicationSettings>>().Settings;
         }
@@ -38,9 +39,11 @@ namespace Ns.Utility.Core.Model.Membership
 
         #region Properties
 
-        public string LoginId { get; private set; }
+        public string UserName { get; private set; }
         public string Password { get; private set; }
-        public string DisplayName { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string DisplayName { get { return string.Format("{0} {1}", FirstName, LastName); } }
         public string AccessKey { get; private set; }
         public string PublicKey { get; private set; }
         public string PrivateKey { get; private set; }
@@ -51,7 +54,7 @@ namespace Ns.Utility.Core.Model.Membership
         public int InvalidLoginAttemptCount { get; private set; }
 
         #endregion
-        
+
         #region Method
 
         /// <summary>

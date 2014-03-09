@@ -4,17 +4,9 @@
     {
         #region IUserFactory Members
 
-        /// <summary>
-        /// Creates the user.
-        /// </summary>
-        /// <param name="loginId">The login id.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="displayName">The display name.</param>
-        /// <param name="accessKey">The access key.</param>
-        /// <returns></returns>
-        public User CreateUser(string loginId, string password, string displayName, string accessKey)
+        public User CreateUser(string userName, string password, string firstName, string lastName, string accessKey)
         {
-            return new User(loginId, password, displayName, accessKey);
+            return new User(userName, password, firstName, lastName, accessKey);
         }
 
         #endregion

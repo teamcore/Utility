@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Ns.Utility.Framework.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Aprimo.Utility.Web.Models
 {
-    public class LoginModel
+    public class LoginModel : BaseEntityModel
     {
         /// <summary>
         /// Gets or sets the name of the user.
