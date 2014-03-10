@@ -3,7 +3,6 @@
     var appModule = angular.module('mainApp');
     appModule.controller('loginController', ['$scope', '$location', 'authentication', function ($scope, $location, authentication) {
 
-        $scope.User = {};
         $scope.LoginModel = {};
 
         $scope.init = function () {
@@ -21,10 +20,6 @@
 
         $scope.reset = function () {
             $scope.LoginModel = {};
-        };
-
-        $scope.isDirty = function (login) {
-            return angular.equals(login, $scope.User);
         };
 
         $scope.init();

@@ -1,20 +1,30 @@
 ﻿(function () {
     'use strict';
     var appModule = angular.module('mainApp');
-    appModule.controller('profileController', ['$scope', '$location', 'profileService', function ($scope, $location, profileService) {
-
-        $scope.User = {};
+    appModule.controller('profileController', ['$scope', '$location', 'Profile', function ($scope, $location, Profile) {
+        var message = { body: "Profile Registration", title: "" };
         $scope.UserModel = {};
+        $scope.word = /^\s*\w*\s*$/;
 
         $scope.init = function () {
-            $scope.User = angular.copy($scope.UserModel);
+            
         };
 
         $scope.submit = function (user) {
             var areEqual = angular.equals(user.Password, user.ConfirmPassword);
-            if (areEqual)
-            {
-                profileService.register(user);
+            if (areEqual) {
+                Profile.register(user, function () {
+                    message.body = "Thank you " + user.FirstName + " " + user.LastName + ", You are registered with us.";
+                    toastr.success(message.body, message.title);
+                    $location.path("/login");
+                }, function (data, status, headers, config) {
+                    message.body = "Oops! Error occour in registration";
+                    toastr.error(message.body, message.title);
+                });
+            }
+            else {
+                message.body = "Oops! Password and Confirm password is not same";
+                toastr.error(message.body, message.title);
             }
         };
 
@@ -25,10 +35,6 @@
 
         $scope.reset = function () {
             $scope.UserModel = {};
-        };
-
-        $scope.isDirty = function (user) {
-            return angular.equals(user, $scope.User);
         };
 
         $scope.init();

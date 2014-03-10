@@ -25,7 +25,8 @@ namespace Ns.Utility.Web
                         "~/Scripts/angular.js",
                         "~/Scripts/i18n/angular-locale_en-us.js",
                         "~/Scripts/angular-route.js",
-                        "~/Scripts/angular-resource.js"));
+                        "~/Scripts/angular-resource.js",
+                        "~/Scripts/angular-animate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularui").Include(
                        "~/Scripts/ui-bootstrap-{version}.js",

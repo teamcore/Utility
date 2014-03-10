@@ -9,8 +9,8 @@
                 $window.sessionStorage.Token = data.Token;
                 $window.sessionStorage.DisplayName = data.DisplayName;
                 $window.sessionStorage.UserName = data.UserName;
-                $location.path('/');
                 $window.location.reload();
+                $location.path('/');
             }).error(function (data, status, headers, config) {
                 delete $window.sessionStorage.Token;
                 delete $window.sessionStorage.DisplayName;
@@ -23,8 +23,8 @@
             delete $window.sessionStorage.Token;
             delete $window.sessionStorage.DisplayName;
             delete $window.sessionStorage.UserName;
-            $location.path('/');
             $window.location.reload();
+            $location.path('/');
         };
 
         return factory;
