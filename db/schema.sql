@@ -106,7 +106,7 @@ create table [dbo].[Ranges] (
     [Description] [nvarchar](250) null,
     [Min] [int] not null,
     [Max] [int] not null,
-    [Current] [int] not null,
+    [Next] [int] not null,
     [IsExhausted] [bit] not null,
     [ProjectId] [int] not null,
     [IsActive] [bit] not null,
@@ -178,6 +178,27 @@ create table [dbo].[TaskTypes] (
 );
 create table [dbo].[Terms] (
     [Id] [int] not null identity,
+    [IsActive] [bit] not null,
+    [ActivatedOn] [datetime] null,
+    [IsDeleted] [bit] not null,
+    [DeletedOn] [datetime] null,
+    [Version] [rowversion] not null,
+    primary key ([Id])
+);
+create table [dbo].[Users] (
+    [Id] [int] not null identity,
+    [UserName] [nvarchar](250) null,
+    [Password] [nvarchar](250) null,
+    [FirstName] [nvarchar](250) null,
+    [LastName] [nvarchar](250) null,
+    [AccessKey] [nvarchar](250) null,
+    [PublicKey] [nvarchar](250) null,
+    [PrivateKey] [nvarchar](250) null,
+    [IsLoggedIn] [bit] not null,
+    [LastLoginDate] [datetime] null,
+    [IsLockedOut] [bit] not null,
+    [LastLockedDate] [datetime] null,
+    [InvalidLoginAttemptCount] [int] not null,
     [IsActive] [bit] not null,
     [ActivatedOn] [datetime] null,
     [IsDeleted] [bit] not null,
