@@ -16,7 +16,7 @@
                 Profile.register(user, function () {
                     message.body = "Thank you " + user.FirstName + " " + user.LastName + ", You are registered with us.";
                     toastr.success(message.body, message.title);
-                    $location.path("/login");
+                    $location.path("/");
                 }, function (data, status, headers, config) {
                     message.body = "Oops! Error occour in registration";
                     toastr.error(message.body, message.title);

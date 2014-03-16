@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
@@ -34,7 +35,7 @@ namespace Ns.Utility.Framework.DomainModel
         ///     See the FAQ within the documentation if you'd like to have the Id XML serialized.
         /// </summary>
         [XmlIgnore]
-        public virtual TId Id { get; set; }
+        public virtual TId Id { get; private set; }
 
         public override bool Equals(object obj)
         {
