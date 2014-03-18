@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentAssertions;
 
 namespace Ns.Utility.UnitTests.Core
 {
@@ -23,10 +24,14 @@ namespace Ns.Utility.UnitTests.Core
             factory = new ResourceFactory(range);
         }
 
-        [TestCase]
-        public void generate_script_for_resource()
+        [TestCase("Test Replacement String", "this is test description")]
+        public void generate_resource_script(string text, string description)
         {
-
+            var resource = factory.CreateResource(text, description);
+            string script = resource.Generate(false);
+            script.Should().NotBeNullOrEmpty();
+            script.Should().Contain("INSERT INTO replacement_string_table");
+            script.Should().Contain("INSERT INTO completed_strings");
         }
     }
 }

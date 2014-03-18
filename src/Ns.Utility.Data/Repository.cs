@@ -72,23 +72,18 @@ namespace Ns.Utility.Data
 
         public void Add(T entity)
         {
-            Entities.Add(entity);
+            context.Entry<T>(entity).State = EntityState.Added;
         }
 
         public void Update(T entity)
         {
-            Entities.Attach(entity);
-            var ctx = context as IObjectContextAdapter;
-            if (ctx != null)
-            {
-                ctx.ObjectContext.ObjectStateManager.ChangeObjectState(entity, EntityState.Modified);
-            }
+            context.Entry<T>(entity).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
             var entity = Get(id);
-            Entities.Remove(entity);
+            context.Entry<T>(entity).State = EntityState.Deleted;
         }
 
         public IDbSet<T> Entities { get; private set; }
