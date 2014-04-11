@@ -9,7 +9,10 @@ namespace Ns.Utility.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.js",
+                        "~/Scripts/jquery.validate.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -21,31 +24,11 @@ namespace Ns.Utility.Web
                       "~/Scripts/respond.js",
                       "~/Scripts/toastr.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular.js",
-                        "~/Scripts/i18n/angular-locale_en-us.js",
-                        "~/Scripts/angular-route.js",
-                        "~/Scripts/angular-resource.js",
-                        "~/Scripts/angular-animate.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angularui").Include(
-                       "~/Scripts/ui-bootstrap-{version}.js",
-                       "~/Scripts/ui-bootstrap-tpls-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                "~/Scripts/app/app.js",
-                //"~/Scripts/app/filters/*.js",
-                //"~/Scripts/app/directives/*.js",
-                "~/Scripts/app/services/*.js",
-                "~/Scripts/app/controllers/*.js"));
-
-            bundles.Add(new ScriptBundle("~/bundlers/firebase").Include("~/Scripts/firebase.js", "~/Scripts/angularfire.js"));
+            bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/app/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Scripts/angular-csp.css",
-                      "~/Content/angular-ui.css",
-                      "~/Content/select2.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));
         }
