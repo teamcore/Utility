@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en-us" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="mainApp">
+<head>
+    <!--[if lte IE 8]>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/angular-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-controller="applicationController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li><a href="#/projects">Projects</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="DisplayName"><a href="#/login">Login</a></li>
+                    <li ng-hide="DisplayName"><a href="#/register">Register</a></li>
+                    <li ng-show="DisplayName" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{DisplayName}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="logout()" href="#">Logout</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Settings</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+        <footer class="footer-bar">
+            <div class="navbar-inverse navbar-fixed-bottom">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>
+        </footer>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")*@
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-ui.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/ui-bootstrap-0.10.0.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/app/app.js"></script>
+    <script src="~/Scripts/app/services/authInterceptor.js"></script>
+    <script src="~/Scripts/app/services/authService.js"></script>
+    <script src="~/Scripts/app/services/profileService.js"></script>
+    <script src="~/Scripts/app/services/projectService.js"></script>
+    <script src="~/Scripts/app/controllers/applicationController.js"></script>
+    <script src="~/Scripts/app/controllers/dashboardController.js"></script>
+    <script src="~/Scripts/app/controllers/loginController.js"></script>
+    <script src="~/Scripts/app/controllers/profileController.js"></script>
+    <script src="~/Scripts/app/controllers/projectController.js"></script>
+    <script src="~/Scripts/app/controllers/rangeController.js"></script>
+
+    @*@Scripts.Render("~/bundles/app")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>
