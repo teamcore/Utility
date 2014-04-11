@@ -53,8 +53,11 @@
     <Compile Include="Model\Projects\ProjectFactory.cs" />
     <Compile Include="Model\Ranges\IRangeFactory.cs" />
     <Compile Include="Model\Ranges\Range.cs" />
+    <Compile Include="Model\Ranges\RangeExhaustedException.cs" />
     <Compile Include="Model\Ranges\RangeFactory.cs" />
+    <Compile Include="Model\Resources\IResourceFactory.cs" />
     <Compile Include="Model\Resources\Resource.cs" />
+    <Compile Include="Model\Resources\ResourceFactory.cs" />
     <Compile Include="Model\Resources\Term.cs" />
     <Compile Include="Model\Tabs\Tab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

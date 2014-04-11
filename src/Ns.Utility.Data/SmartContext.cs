@@ -40,8 +40,13 @@ namespace Ns.Utility.Data
             }
 
             modelBuilder.Properties<decimal>().Configure(config => config.HasPrecision(10, 2));
-            modelBuilder.Properties<string>().Where(p => p.Name.Equals("Description", StringComparison.OrdinalIgnoreCase)).Configure(config => config.HasMaxLength(2000));
             modelBuilder.Properties<string>().Configure(config => config.HasMaxLength(250));
+            modelBuilder.Properties<string>().Where(p => p.Name.Equals("Name")).Configure(config => config.HasMaxLength(50));
+            modelBuilder.Properties<string>().Where(p => p.Name.Equals("FirstName")).Configure(config => config.HasMaxLength(50));
+            modelBuilder.Properties<string>().Where(p => p.Name.Equals("MiddleName")).Configure(config => config.HasMaxLength(50));
+            modelBuilder.Properties<string>().Where(p => p.Name.Equals("LastName")).Configure(config => config.HasMaxLength(50));
+            modelBuilder.Properties<string>().Where(p => p.Name.Equals("Code")).Configure(config => config.HasMaxLength(10));
+            modelBuilder.Properties<string>().Where(p => p.Name.Equals("Description")).Configure(config => config.HasMaxLength(2000));
             base.OnModelCreating(modelBuilder);
         }
 

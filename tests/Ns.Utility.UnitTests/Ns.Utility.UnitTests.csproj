@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Core\RangeTest.cs" />
     <Compile Include="Core\ParameterTest.cs" />
+    <Compile Include="Core\ResourceTest.cs" />
     <Compile Include="Data\ProjectRepositoryTest.cs" />
     <Compile Include="Helper\PersistenceTest.cs" />
     <Compile Include="Helper\RepositoryTest.cs" />

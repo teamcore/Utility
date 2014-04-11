@@ -23,38 +23,6 @@ namespace Ns.Utility.Tests.Core
         }
 
         [Category("Business Rule")]
-        [TestCase("", "This is a dummy identity range", 1, 5, 1)]
-        [ExpectedException(typeof(FunctionalException), ExpectedMessage = "Name is mandatory.")]
-        public void name_cannot_be_null_or_blank(string name, string description, int min, int max, int projectId)
-        {
-            var identity = factory.Create(name, description, min, max, projectId);
-        }
-
-        [Category("Business Rule")]
-        [TestCase("Dummy Range", "This is a dummy identity range", 0, 5, 1)]
-        [ExpectedException(typeof(FunctionalException), ExpectedMessage = "Min value cannot be zero.")]
-        public void min_value_cannot_be_zero(string name, string description, int min, int max, int projectId)
-        {
-            var identity = factory.Create(name, description, min, max, projectId);
-        }
-
-        [Category("Business Rule")]
-        [TestCase("Dummy Range", "This is a dummy identity range", 1, 0, 1)]
-        [ExpectedException(typeof(FunctionalException), ExpectedMessage = "Max value cannot be zero.")]
-        public void max_value_cannot_be_zero(string name, string description, int min, int max, int projectId)
-        {
-            var identity = factory.Create(name, description, min, max, projectId);
-        }
-
-        [Category("Business Rule")]
-        [TestCase("Dummy Range", "This is a dummy identity range", 1, 5, 0)]
-        [ExpectedException(typeof(FunctionalException), ExpectedMessage = "Project is mandatory.")]
-        public void projectId_cannot_be_zero(string name, string description, int min, int max, int projectId)
-        {
-            var identity = factory.Create(name, description, min, max, projectId);
-        }
-
-        [Category("Business Rule")]
         [TestCase("Dummy Range", "This is a dummy identity range", 1, 5, 1)]
         [TestCase("Dummy Range", "This is a dummy identity range", 100, 105, 1)]
         public void when_new_range_added_will_be_available_for_next_id(string name, string description, int min, int max, int projectId)
@@ -67,7 +35,7 @@ namespace Ns.Utility.Tests.Core
         [Category("Business Rule")]
         [TestCase("Dummy Range", "This is a dummy identity range", 1, 5, 1)]
         [TestCase("Dummy Range", "This is a dummy identity range", 100, 105, 1)]
-        public void when_identity_range_fully_utilized_it_will_update_isexhausted_flat(string name, string description, int min, int max, int projectId)
+        public void when_identity_range_fully_utilized_it_will_update_isexhausted(string name, string description, int min, int max, int projectId)
         {
             var identity = factory.Create(name, description, min, max, projectId);
             for (int i = min; i <= max; i++)
@@ -79,18 +47,40 @@ namespace Ns.Utility.Tests.Core
         }
 
         [Category("Business Rule")]
-        [TestCase("Dummy Range", "This is a dummy identity range", 1, 5, 1, 10)]
-        [TestCase("Dummy Range", "This is a dummy identity range", 100, 105, 1, 110)]
+        [TestCase("Dummy Range", "This is a dummy identity range", 1, 2, 1)]
+        [TestCase("Dummy Range", "This is a dummy identity range", 100, 103, 1)]
+        [ExpectedException(typeof(RangeExhaustedException))]
+        public void when_try_to_get_next_id_once_exhausted(string name, string description, int min, int max, int projectId)
+        {
+            var identity = factory.Create(name, description, min, max, projectId);
+            do
+            {
+                identity.GetNextId();
+            } while (min <= max);
+        }
+
+        [Category("Business Rule")]
+        [TestCase("Dummy Range", "This is a dummy identity range", 1, 1, 1, 10)]
+        [TestCase("Dummy Range", "This is a dummy identity range", 100, 100, 1, 110)]
         public void renew_identity_range_with_new_value(string name, string description, int min, int max, int projectId, int renew)
         {
             var identity = factory.Create(name, description, min, max, projectId);
-            for (int i = min; i <= max; i++)
-            {
-                identity.GetNextId();
-            }
-
+            identity.GetNextId();
             Assert.AreEqual(true, identity.IsExhausted);
 
+            identity.Renew(renew);
+            Assert.AreEqual(false, identity.IsExhausted);
+            Assert.AreEqual(renew, identity.Max);
+            Assert.AreEqual(max + 1, identity.GetNextId());
+        }
+
+        [Category("Business Rule")]
+        [TestCase("Dummy Range", "This is a dummy identity range", 1, 1, 1, 1)]
+        [TestCase("Dummy Range", "This is a dummy identity range", 100, 100, 1, 100)]
+        [ExpectedException(typeof(FunctionalException))]
+        public void when_renew_with_less_or_equal_with_existing_max_value(string name, string description, int min, int max, int projectId, int renew)
+        {
+            var identity = factory.Create(name, description, min, max, projectId);
             identity.Renew(renew);
             Assert.AreEqual(false, identity.IsExhausted);
             Assert.AreEqual(renew, identity.Max);
