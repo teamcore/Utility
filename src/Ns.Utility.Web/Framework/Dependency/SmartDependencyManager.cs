@@ -13,6 +13,7 @@ using System.Runtime.Caching;
 using System.Web;
 using System.Web.Http;
 using System.Data.Entity;
+using Ns.Utility.Web.Framework.Mvc;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -25,6 +26,7 @@ namespace Ns.Utility.Web.Framework.Dependency
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
             builder.RegisterType<CacheItemPolicy>().As<CacheItemPolicy>();
             builder.RegisterType<PerRequestCacheProvider>().As<ICacheProvider>();
+            builder.RegisterType<PageTitleBuilder>().As<IPageTitleBuilder>();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(ModelMapper<,>)).As(typeof(IModelMapper<,>));
             builder.RegisterGeneric(typeof(CollectionModelMapper<,>)).As(typeof(ICollectionModelMapper<,>));
