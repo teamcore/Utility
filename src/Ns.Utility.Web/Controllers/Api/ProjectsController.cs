@@ -10,7 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Ns.Utility.Web.Controllers
+namespace Ns.Utility.Web.Controllers.Api
 {
     public class ProjectsController : ApiController
     {
