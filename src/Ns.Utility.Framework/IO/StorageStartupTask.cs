@@ -21,7 +21,7 @@ namespace Ns.Utility.Framework.IO
 
         public void Execute()
         {
-            if (provider.Settings == null)
+            if (provider.Settings.IsDefaultOrEmpty())
             {
                 var settings = FileSystemSettings.Default();
                 provider.Save(settings);

@@ -34,7 +34,10 @@ namespace Ns.Utility.Data
             this.context = context;
             this.policy = policy;
             this.cacheProvider = cacheProvider;
-            Entities = this.context.Set<T>();
+            if (Entities == null)
+            {
+                Entities = this.context.Set<T>();
+            }
         }
 
         #endregion

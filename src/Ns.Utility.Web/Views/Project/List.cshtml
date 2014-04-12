@@ -1,7 +1,22 @@
-﻿
+﻿@using Ns.Utility.Web.Framework.Helper
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<div class="panel panel-default form-top">
+    <div id="grid"></div>
+</div>
 
+@section styles
+{
+    @Styles.Render("~/Content/kendo")
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/kendo")
+    <script type="text/javascript">
+        var feedUrl = '@Html.BuildUrl("/api/projects")'
+    </script>
+    @Scripts.Render("~/bundles/project")
+}

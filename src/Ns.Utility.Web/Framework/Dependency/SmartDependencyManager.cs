@@ -22,11 +22,11 @@ namespace Ns.Utility.Web.Framework.Dependency
         public override void Register(ContainerBuilder builder)
         {
             base.Register(builder);
-            builder.RegisterType<SmartContext>().As<DbContext>();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
-            builder.RegisterType<CacheItemPolicy>().As<CacheItemPolicy>();
-            builder.RegisterType<PerRequestCacheProvider>().As<ICacheProvider>();
-            builder.RegisterType<PageTitleBuilder>().As<IPageTitleBuilder>();
+            builder.RegisterType<SmartContext>().As<DbContext>().SingleInstance();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
+            builder.RegisterType<CacheItemPolicy>().As<CacheItemPolicy>().SingleInstance();
+            builder.RegisterType<PerRequestCacheProvider>().As<ICacheProvider>().SingleInstance();
+            builder.RegisterType<PageTitleBuilder>().As<IPageTitleBuilder>().SingleInstance();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(ModelMapper<,>)).As(typeof(IModelMapper<,>));
             builder.RegisterGeneric(typeof(CollectionModelMapper<,>)).As(typeof(ICollectionModelMapper<,>));

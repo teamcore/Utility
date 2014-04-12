@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Html.AppTitle()</title>
     @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -18,24 +19,52 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink(@Html.AppTitle().ToString(), "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li><a href="#">Projects</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Name <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Logout</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Settings</a></li>
+                            <li>@Html.ActionLink("Projects List", "List", "Project", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("New Project", "AddEdit", "Project", new { area = "" }, null)</li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">System Parameters</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("System Parameters", "List", "Parameter", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("New System Parameter", "AddEdit", "Parameter", new { area = "" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("System Parameter Tabs", "List", "Tab", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("New System Parameter Tab", "AddEdit", "Tab", new { area = "" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("System Parameter Groups", "List", "Group", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("New System Parameter Group", "AddEdit", "Group", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Replacement Strings", "List", "Resource", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("New Replacement String", "AddEdit", "Resource", new { area = "" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Replacement Terms", "List", "Term", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("New Replacement Term", "AddEdit", "Term", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="glyphicon glyphicon-user"></b> @User.Identity.Name</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Settings</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -48,7 +77,7 @@
         </div>
         <footer class="footer-bar">
             <div class="navbar-inverse navbar-fixed-bottom">
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <p>&copy; @DateTime.Now.Year - @Html.AppTitle(). All Rights Reserved.</p>
             </div>
         </footer>
     </div>

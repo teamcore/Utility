@@ -12,9 +12,10 @@ using System.Web.Http;
 
 namespace Ns.Utility.Web.Controllers.Api
 {
-    public class ProjectsController : ApiController
+    public class ProjectsController : ApiControllerBase<Project, ProjectModel>
     {
         public ProjectsController(IRepository<Project> repository, ICollectionModelMapper<Project, ProjectModel> mapper)
+            : base(repository, mapper)
         {
 
         }

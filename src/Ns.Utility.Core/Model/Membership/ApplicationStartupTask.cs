@@ -21,7 +21,7 @@ namespace Ns.Utility.Core.Model.Membership
         /// </summary>
         public void Execute()
         {
-            if (provider.Settings == null)
+            if (provider.Settings.IsDefaultOrEmpty())
             {
                 var settings = ApplicationSettings.Default();
                 provider.Save(settings);

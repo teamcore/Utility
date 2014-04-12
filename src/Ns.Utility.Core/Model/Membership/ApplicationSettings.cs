@@ -4,11 +4,21 @@ namespace Ns.Utility.Core.Model.Membership
 {
     public class ApplicationSettings : ISetting
     {
+        public bool IsDefaultOrEmpty()
+        {
+            return string.IsNullOrEmpty(AppTitle)
+                && string.IsNullOrEmpty(PageTitleSeparator)
+                && string.IsNullOrEmpty(DefaultPageTitle)
+                && string.IsNullOrEmpty(DefaultMetaKeywords)
+                && string.IsNullOrEmpty(DefaultMetaDescription)
+                && MaxInvalidLoginAttemptCount == 0;
+        }
+
         public static ApplicationSettings Default()
         {
             return new ApplicationSettings
             {
-                AppTitle = "Aprimo Utility Application",
+                AppTitle = "Aprimo Utility",
                 MaxInvalidLoginAttemptCount = 3,
                 DefaultPageTitle = "Index",
                 DefaultMetaKeywords = "Nirajan Singh",
