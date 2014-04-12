@@ -57,8 +57,6 @@ namespace Ns.Utility.Web.Framework.Api
         {
             var entity = mapper.Map(model);
             repository.Add(entity);
-            //var modelResult = mapper.Map(entity);
-            //return new ModelActionResult<TModel>(modelResult, Request);
         }
 
         [Transaction]

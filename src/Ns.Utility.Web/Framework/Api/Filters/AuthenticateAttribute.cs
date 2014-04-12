@@ -168,7 +168,7 @@ namespace Ns.Utility.Web.Framework.Api.Filters
             var user = repository.FindOne(x => x.UserName == username);
             if (user != null)
             {
-                accessKey = user.AccessKey;
+                
             }
 
             return accessKey;

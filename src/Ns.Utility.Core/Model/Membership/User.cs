@@ -23,15 +23,17 @@ namespace Ns.Utility.Core.Model.Membership
 
         }
 
-        internal User(string userName, string password, string firstName, string lastName, string accessKey)
+        internal User(string domain, string userName) : this(domain, userName, string.Empty, string.Empty)
         {
-            PublicKey = SecurityHelper.GetPublicKey();
-            PrivateKey = SecurityHelper.GetPrivateKey();
+            
+        }
+
+        internal User(string domain, string userName, string firstName, string lastName)
+        {
+            Domain = domain;
             UserName = userName;
-            Password = SecurityHelper.Encrypt(password, PublicKey);
             FirstName = firstName;
             LastName = LastName;
-            AccessKey = accessKey;
             settings = EngineContext.Current.Resolve<IConfigurationProvider<ApplicationSettings>>().Settings;
         }
 
@@ -39,80 +41,18 @@ namespace Ns.Utility.Core.Model.Membership
 
         #region Properties
 
+        public string Domain { get; private set; }
         public string UserName { get; private set; }
-        public string Password { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string DisplayName { get { return string.Format("{0} {1}", FirstName, LastName); } }
-        public string AccessKey { get; private set; }
-        public string PublicKey { get; private set; }
-        public string PrivateKey { get; private set; }
+        public bool IsAdmin { get; private set; }
         public bool IsLoggedIn { get; private set; }
         public DateTime? LastLoginDate { get; private set; }
-        public bool IsLockedOut { get; private set; }
-        public DateTime? LastLockedDate { get; private set; }
-        public int InvalidLoginAttemptCount { get; private set; }
-
+        
         #endregion
 
         #region Method
-
-        /// <summary>
-        /// Authenticates the specified password.
-        /// </summary>
-        /// <param name="password">The password.</param>
-        /// <returns></returns>
-        /// <exception cref="FunctionalException">User account is locked out.</exception>
-        public bool Authenticate(string password)
-        {
-            bool result = false;
-            var currentDate = DateTime.Now;
-
-            if (IsLockedOut)
-            {
-                throw new FunctionalException("User account is locked out.");
-            }
-
-            var plainPassword = SecurityHelper.Decrypt(Password, PrivateKey);
-            if (plainPassword == password)
-            {
-                AccessKey = Guid.NewGuid().ToString();
-                LastLoginDate = currentDate;
-                InvalidLoginAttemptCount = 0;
-                result = true;
-            }
-            else
-            {
-                InvalidLoginAttemptCount++;
-
-                if (InvalidLoginAttemptCount >= settings.MaxInvalidLoginAttemptCount)
-                {
-                    IsLockedOut = true;
-                    LastLockedDate = currentDate;
-                }
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Changes the password.
-        /// </summary>
-        /// <param name="oldPassword">The old password.</param>
-        /// <param name="password">The password.</param>
-        /// <returns></returns>
-        public bool ChangePassword(string oldPassword, string password)
-        {
-            bool passwordChanged = false;
-            var plainPassword = SecurityHelper.Decrypt(Password, PrivateKey);
-            if (oldPassword == plainPassword)
-            {
-                Password = SecurityHelper.Encrypt(password, PublicKey);
-                passwordChanged = true;
-            }
-
-            return passwordChanged;
-        }
 
         /// <summary>
         /// Logouts this instance.
@@ -120,7 +60,6 @@ namespace Ns.Utility.Core.Model.Membership
         public void Logout()
         {
             IsLoggedIn = false;
-            AccessKey = string.Empty;
         }
 
         #endregion

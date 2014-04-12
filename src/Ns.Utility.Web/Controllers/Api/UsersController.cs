@@ -14,47 +14,21 @@ using System.Web.Http;
 
 namespace Ns.Utility.Web.Controllers.Api
 {
-    public class UsersController : ApiController
+    [RoutePrefix("api/users")]
+    public class UsersController : ApiControllerBase<User, UserModel>
     {
-        private IRepository<User> repository;
-        private ICollectionModelMapper<User, UserModel> mapper;
-        private ICollectionModelMapper<User, UserRegistrationModel> profileMapper;
-
-        public UsersController(IRepository<User> repository, ICollectionModelMapper<User, UserModel> mapper, ICollectionModelMapper<User, UserRegistrationModel> profileMapper)
+        public UsersController(IRepository<User> repository, ICollectionModelMapper<User, UserModel> mapper)
+            : base(repository, mapper)
         {
-            this.repository = repository;
-            this.mapper = mapper;
-            this.profileMapper = profileMapper;
         }
 
-        public IHttpActionResult Get()
+        [Route("exists/{domain}/{userName}")]
+        [HttpGet]
+        public virtual IHttpActionResult Get(string domain, string userName)
         {
-            var users = repository.GetAll();
-            var modelResult = mapper.Map(users);
-            return new ModelActionResult<IEnumerable<UserModel>>(modelResult, Request);
-        }
-
-        public IHttpActionResult Get(int id)
-        {
-            var user = repository.Get(id);
-            var modelResult = mapper.Map(user);
-            return new ModelActionResult<UserModel>(modelResult, Request);
-        }
-
-        [Transaction]
-        public void Post(UserRegistrationModel model)
-        {
-            var user = profileMapper.Map(model);
-            repository.Add(user);
-        }
-
-        [Transaction]
-        public void Put(UserModel model)
-        {
-            var updatedEntity = mapper.Map(model);
-            var entity = repository.FindOne(x => x.Id == model.Id);
-            mapper.Update(updatedEntity, entity);
-            repository.Update(entity);
-        }
+            var entity = repository.FindOne(x => x.Domain == domain && x.UserName == userName);
+            var model = entity != null;
+            return new ModelActionResult<bool>(model, Request);
+        } 
     }
 }
