@@ -16,10 +16,12 @@ namespace Ns.Utility.Web.Framework.Mvc
     public class AuthenticationFilterAttribute : ActionFilterAttribute
     {
         private readonly IRepository<User> repository;
+        private readonly IUnitOfWork unitOfWork;
 
         public AuthenticationFilterAttribute()
         {
             repository = EngineContext.Current.Resolve<IRepository<User>>();
+            unitOfWork = EngineContext.Current.Resolve<IUnitOfWork>();
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -38,6 +40,7 @@ namespace Ns.Utility.Web.Framework.Mvc
             {
                 user = new UserFactory().CreateUser(domain, loginID);
                 repository.Add(user);
+                unitOfWork.Commit();
             }
 
             var identity = CreateIdentity(loginID, user);

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
 using Ns.Utility.Web.Areas.Admin.Models;
+using System.Configuration;
 
 namespace Ns.Utility.Web.Areas.Admin.Controllers
 {
@@ -28,7 +29,7 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
         {
             using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
             {
-                client.BaseAddress = new Uri("http://localhost:2043/");
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseUrl"]);
                 var response = await client.PostAsJsonAsync<ProjectModel>("api/projects", model);
                 if (response.IsSuccessStatusCode)
                 {

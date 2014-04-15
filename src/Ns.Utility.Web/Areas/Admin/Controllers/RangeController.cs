@@ -5,6 +5,7 @@ using Ns.Utility.Web.Areas.Admin.Models;
 using Ns.Utility.Web.Framework.Mapper;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
         {
             using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
             {
-                client.BaseAddress = new Uri("http://localhost:2043/");
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseUrl"]);
                 var response = await client.PostAsJsonAsync<RangeModel>("api/ranges", model);
                 if (response.IsSuccessStatusCode)
                 {

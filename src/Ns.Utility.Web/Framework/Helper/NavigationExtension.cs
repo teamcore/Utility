@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
@@ -6,17 +7,25 @@ namespace Ns.Utility.Web.Framework.Helper
 {
     public static class NavigationExtension
     {
+        //public static MvcHtmlString BuildUrl(this HtmlHelper html, string relativeUrl)
+        //{
+        //    string baseUrl = string.Empty;
+        //    var context = html.ViewContext.HttpContext;
+        //    if (context != null && context.Request != null && context.Request.Url != null)
+        //    {
+        //        baseUrl = context.Request.Url.AbsoluteUri.Replace(context.Request.RawUrl, "");
+        //        var urlFormat = relativeUrl.StartsWith("/") ? "{0}{1}" : "{0}/{1}";
+        //        baseUrl = string.Format(urlFormat, baseUrl, relativeUrl);
+        //    }
+
+        //    return MvcHtmlString.Create(baseUrl);
+        //}
+
         public static MvcHtmlString BuildUrl(this HtmlHelper html, string relativeUrl)
         {
-            string baseUrl = string.Empty;
-            var context = html.ViewContext.HttpContext;
-            if (context != null && context.Request != null && context.Request.Url != null)
-            {
-                baseUrl = context.Request.Url.AbsoluteUri.Replace(context.Request.RawUrl, "");
-                var urlFormat = relativeUrl.StartsWith("/") ? "{0}{1}" : "{0}/{1}";
-                baseUrl = string.Format(urlFormat, baseUrl, relativeUrl);
-            }
-
+            string baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
+            string urlFormat = baseUrl.EndsWith("/") ? "{0}{1}" : "{0}/{1}";
+            baseUrl = string.Format(urlFormat, baseUrl, relativeUrl);
             return MvcHtmlString.Create(baseUrl);
         }
 
