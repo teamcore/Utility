@@ -3,13 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using Ns.Utility.Web.Areas.Admin.Models;
 
-namespace Ns.Utility.Web.Controllers
+namespace Ns.Utility.Web.Areas.Admin.Controllers
 {
-    public class TermController : Controller
+    public class ProjectController : Controller
     {
         public ActionResult List()
         {
@@ -18,16 +20,16 @@ namespace Ns.Utility.Web.Controllers
 
         public ActionResult AddEdit()
         {
-            return View(new TermModel());
+            return View(new ProjectModel());
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddEdit(TermModel model)
+        public async Task<ActionResult> AddEdit(ProjectModel model)
         {
             using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
             {
                 client.BaseAddress = new Uri("http://localhost:2043/");
-                var response = await client.PostAsJsonAsync<TermModel>("api/terms", model);
+                var response = await client.PostAsJsonAsync<ProjectModel>("api/projects", model);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("List");
@@ -36,5 +38,5 @@ namespace Ns.Utility.Web.Controllers
 
             return View(model);
         }
-	}
+    }
 }

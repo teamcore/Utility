@@ -14,6 +14,9 @@ using System.Web;
 using System.Web.Http;
 using System.Data.Entity;
 using Ns.Utility.Web.Framework.Mvc;
+using Ns.Utility.Web.Framework.Security;
+using System.Threading;
+using System.Security.Principal;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -30,6 +33,8 @@ namespace Ns.Utility.Web.Framework.Dependency
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(ModelMapper<,>)).As(typeof(IModelMapper<,>));
             builder.RegisterGeneric(typeof(CollectionModelMapper<,>)).As(typeof(ICollectionModelMapper<,>));
+            builder.Register(x => new UserSession(Thread.CurrentPrincipal as SmartPrincipal)).As<IUserSession>();
+            //builder.RegisterType<UserSession>().As<IUserSession>().PropertiesAutowired();
         }
     }
 }

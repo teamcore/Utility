@@ -1,0 +1,58 @@
+﻿@model Ns.Utility.Web.Areas.Admin.Models.RangeModel
+@{
+    ViewBag.Title = "AddEdit";
+}
+
+<div class="panel panel-default form-top">
+    <div class="panel-heading">
+        <h3 class="panel-title">ID Range</h3>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("AddEdit", "Range", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Enter Range Name" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.ProjectId, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @*@Html.TextBoxFor(x => x.Min, new { @class = "form-control", placeholder = "Enter Minimum" })*@
+                    @Html.DropDownListFor(x => x.ProjectId, Model.Projects.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control", placeholder = "Select Project" })
+                    @Html.ValidationMessageFor(x => x.ProjectId)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Min, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(x => x.Min, new { @class = "form-control", placeholder = "Enter Minimum" })
+                    @Html.ValidationMessageFor(x => x.Min)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Max, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(x => x.Max, new { @class = "form-control", placeholder = "Enter Minimum" })
+                    @Html.ValidationMessageFor(x => x.Max)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Description, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextAreaFor(x => x.Description, 3, 3, new { @class = "form-control", placeholder = "Enter Project Code" })
+                    @Html.ValidationMessageFor(x => x.Description)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <button type="submit" class=" btn btn-default">Submit</button>
+                    <button class="btn btn-default">Cancel</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

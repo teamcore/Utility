@@ -29,6 +29,15 @@ namespace Ns.Utility.Web.Controllers.Api
             var entity = repository.FindOne(x => x.Domain == domain && x.UserName == userName);
             var model = entity != null;
             return new ModelActionResult<bool>(model, Request);
-        } 
+        }
+
+        [Route("{domain}/{userName}")]
+        [HttpGet]
+        public virtual IHttpActionResult GetUser(string domain, string userName)
+        {
+            var entity = repository.FindOne(x => x.Domain == domain && x.UserName == userName);
+            var model = mapper.Map(entity);
+            return new ModelActionResult<UserModel>(model, Request);
+        }
     }
 }
