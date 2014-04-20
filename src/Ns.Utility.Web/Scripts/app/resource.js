@@ -32,24 +32,47 @@
                 title: "Description"
             },
             {
-                title: "Action",
-                template: "<a href='AddEdit/#=Id#'>Edit</a>"
-            },
-            {
-                command: { text: "Delete", click: DeleteRecord },
-                title: "Delete"
+                title: "Edit",
+                template: "<a href='AddEdit/#=Id#'>Edit</a>",
+                width: "70px"
             }
         ]
     });
 
-    var grid = $("#grid").data("kendoGrid");
-    var checkbox;
-    $('#grid').on("change", ".checkbox-all", function () {
-        checkbox = $(this);
-        grid.table.find("tr").find("td:first input").prop("checked", checkbox.is(":checked"));
+    $("#export").click(function () {
+        var kGrid = $("#grid").data("kendoGrid");
+        IDs = grid.select(kGrid);
+        if (IDs.length == 0) {
+            toastr.error('No row(s) checked to export.')
+        }
     });
 
-    $('#grid').on("change", ".k-checkbox", function () {
-        checkbox.prop("checked", false);
+    $("#preview").click(function () {
+        var kGrid = $("#grid").data("kendoGrid");
+        IDs = grid.select(kGrid);
+        if (IDs.length == 0) {
+            toastr.error('No row(s) checked to preview.')
+            return;
+        }
+
+        $("#grid").addClass('hidden');
+        $("#grid-buttons").addClass('hidden');
+        $("#preview-buttons").removeClass('hidden');
+        $("#code-container").removeClass('hidden');
+    });
+
+    $("#back").click(function () {
+        $("#grid").removeClass('hidden');
+        $("#grid-buttons").removeClass('hidden');
+        $("#preview-buttons").addClass('hidden');
+        $("#code-container").addClass('hidden');
+    });
+
+    $("#confirm").click(function () {
+        $('#delete-confirm').modal('hide')
+        grid.deleteRows(IDs, function () {
+            toastr.success(IDs.length + ' row(s) deleted.')
+        });
+
     });
 });

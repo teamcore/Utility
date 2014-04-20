@@ -448,9 +448,8 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\app\grid.export.js" />
-    <Content Include="Scripts\app\grid.selectall.js" />
-    <Content Include="Scripts\app\grid.preview.js" />
+    <Content Include="Scripts\app\kendo.helper.js" />
+    <Content Include="Scripts\app\grid.helper.js" />
     <Content Include="Scripts\app\project.js" />
     <Content Include="Scripts\app\range.js" />
     <Content Include="Scripts\app\resource.js" />
@@ -1008,6 +1007,7 @@
     <Content Include="Scripts\kendo\2014.1.318\kendo.binder.min.js.map" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.autocomplete.min.js.map" />
     <Content Include="Scripts\kendo\2014.1.318\jquery.min.map" />
+    <Content Include="Views\Resource\Preview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ns.Utility.Application\Ns.Utility.Application.csproj">

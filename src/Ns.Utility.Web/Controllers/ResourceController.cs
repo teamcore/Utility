@@ -36,5 +36,16 @@ namespace Ns.Utility.Web.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Preview(IList<int> ids)
+        {
+            return RedirectToAction("Preview");
+        }
+
+        public ActionResult Preview()
+        {
+            return View();
+        }
 	}
 }

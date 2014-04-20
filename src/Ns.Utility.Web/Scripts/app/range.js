@@ -40,7 +40,7 @@
                 template: "<a href='AddEdit/#=Id#'>Edit</a>"
             },
             {
-                command: { text: "Delete", click: DeleteRecord },
+                command: { text: "Delete", click: grid.deleteRow },
                 title: "Delete"
             }
         ]

@@ -36,20 +36,9 @@
                 template: "<a href='AddEdit/#=Id#'>Edit</a>"
             },
             {
-                command: { text: "Delete", click: DeleteRecord },
+                command: { text: "Delete", click: grid.deleteRow },
                 title: "Delete"
             }
         ]
-    });
-
-    var grid = $("#grid").data("kendoGrid");
-    var checkbox;
-    $('#grid').on("change", ".checkbox-all", function () {
-        checkbox = $(this);
-        grid.table.find("tr").find("td:first input").prop("checked", checkbox.is(":checked"));
-    });
-
-    $('#grid').on("change", ".k-checkbox", function () {
-        checkbox.prop("checked", false);
     });
 });
