@@ -1,5 +1,23 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using Ns.Utility.Web.Framework.Helper
+@{
+    ViewBag.Title = "List";
 }
 
+<div class="panel panel-default form-top">
+    <div id="grid"></div>
+</div>
 
+@section styles
+{
+    @Styles.Render("~/Content/kendo")
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/kendo")
+    <script type="text/javascript">
+        var feedUrl = '@Html.BuildUrl("/api/resources")'
+    </script>
+    @Scripts.Render("~/bundles/resource")
+    @Scripts.Render("~/bundles/grid")
+}

@@ -31,11 +31,25 @@ namespace Ns.Utility.Web.Framework.Api
             this.mapper = mapper;
         }
 
-        public virtual IHttpActionResult Get()
+        [Route("{id:int}")]
+        public virtual IHttpActionResult GetById(int id)
+        {
+            var entity = repository.Get(id);
+            if(entity == null)
+            {
+                return NotFound();
+            }
+            
+            var model = mapper.Map(entity);
+            return Ok<TModel>(model);
+        }
+
+        [Route("")]
+        public virtual IEnumerable<TModel> GetAll()
         {
             var entities = repository.GetAll().OrderBy(x => x.Id);
             var models = mapper.Map(entities).AsQueryable();
-            return new ModelActionResult<IEnumerable<TModel>>(models, Request);
+            return models;
         }
 
         public virtual KendoResult<TModel> Get(int take, int skip, int page, int pageSize)
@@ -43,13 +57,6 @@ namespace Ns.Utility.Web.Framework.Api
             var count = repository.GetAll().Count();
             var entities = repository.GetAll().OrderByDescending(x => x.Id).Skip(skip).Take(take);
             return new KendoResult<TModel>(mapper.Map(entities), count);
-        }
-
-        public virtual IHttpActionResult Get(int id)
-        {
-            var entity = repository.Get(id);
-            var model = mapper.Map(entity);
-            return new ModelActionResult<TModel>(model, Request);
         }
 
         [Transaction]

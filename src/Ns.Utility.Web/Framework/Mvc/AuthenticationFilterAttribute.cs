@@ -10,10 +10,11 @@ using System.Security.Principal;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Filters;
 
 namespace Ns.Utility.Web.Framework.Mvc
 {
-    public class AuthenticationFilterAttribute : ActionFilterAttribute
+    public class AuthenticationFilterAttribute : ActionFilterAttribute, IAuthenticationFilter
     {
         private readonly IRepository<User> repository;
         private readonly IUnitOfWork unitOfWork;
@@ -22,12 +23,6 @@ namespace Ns.Utility.Web.Framework.Mvc
         {
             repository = EngineContext.Current.Resolve<IRepository<User>>();
             unitOfWork = EngineContext.Current.Resolve<IUnitOfWork>();
-        }
-
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            SetPrincipal(WindowsIdentity.GetCurrent().Name);
-            base.OnActionExecuting(filterContext);
         }
 
         private void SetPrincipal(string userName)
@@ -63,6 +58,16 @@ namespace Ns.Utility.Web.Framework.Mvc
             identity.AddClaim(new Claim(SmartClaimTypes.ProjectID, string.Empty));
             identity.AddClaim(new Claim(SmartClaimTypes.IsAdmin, user.IsAdmin ? bool.TrueString : bool.FalseString));
             return identity;
+        }
+
+        public void OnAuthentication(AuthenticationContext filterContext)
+        {
+            SetPrincipal(WindowsIdentity.GetCurrent().Name);
+        }
+
+        public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
+        {
+            
         }
     }
 }

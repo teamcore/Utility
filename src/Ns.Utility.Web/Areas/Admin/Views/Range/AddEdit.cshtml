@@ -20,7 +20,6 @@
             <div class="form-group">
                 @Html.LabelFor(x => x.ProjectId, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">
-                    @*@Html.TextBoxFor(x => x.Min, new { @class = "form-control", placeholder = "Enter Minimum" })*@
                     @Html.DropDownListFor(x => x.ProjectId, Model.Projects.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control", placeholder = "Select Project" })
                     @Html.ValidationMessageFor(x => x.ProjectId)
                 </div>

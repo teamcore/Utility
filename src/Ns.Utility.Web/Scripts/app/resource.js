@@ -16,16 +16,16 @@
             },
             {
                 field: "Id",
-                title: "Project ID",
+                title: "ID",
                 width: "140px"
             },
             {
-                field: "Name",
-                title: "Project Name"
+                field: "Key",
+                title: "Resource ID"
             },
             {
-                field: "Code",
-                title: "Project Code"
+                field: "Text",
+                title: "Text"
             },
             {
                 field: "Description",
@@ -41,5 +41,15 @@
             }
         ]
     });
-    
+
+    var grid = $("#grid").data("kendoGrid");
+    var checkbox;
+    $('#grid').on("change", ".checkbox-all", function () {
+        checkbox = $(this);
+        grid.table.find("tr").find("td:first input").prop("checked", checkbox.is(":checked"));
+    });
+
+    $('#grid').on("change", ".k-checkbox", function () {
+        checkbox.prop("checked", false);
+    });
 });

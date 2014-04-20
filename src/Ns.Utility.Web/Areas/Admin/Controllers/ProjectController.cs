@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Threading.Tasks;
 using Ns.Utility.Web.Areas.Admin.Models;
 using System.Configuration;
+using Ns.Utility.Web.Framework;
 
 namespace Ns.Utility.Web.Areas.Admin.Controllers
 {
@@ -19,22 +20,19 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult AddEdit()
+        public async Task<ActionResult> AddEdit(int id)
         {
-            return View(new ProjectModel());
+            var project = await ApiUtility.GetAsync<ProjectModel>(string.Format("{0}/{1}", Services.Projects, id));
+            return View(project.FirstOrDefault());
         }
 
         [HttpPost]
         public async Task<ActionResult> AddEdit(ProjectModel model)
         {
-            using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
+            var response = await ApiUtility.PostAsync<ProjectModel>(Services.Projects, model);
+            if (response)
             {
-                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseUrl"]);
-                var response = await client.PostAsJsonAsync<ProjectModel>("api/projects", model);
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("List");
-                }
+                return RedirectToAction("List");
             }
 
             return View(model);

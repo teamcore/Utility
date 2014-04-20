@@ -10,6 +10,7 @@ namespace Ns.Utility.Web
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthenticationFilterAttribute());
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }

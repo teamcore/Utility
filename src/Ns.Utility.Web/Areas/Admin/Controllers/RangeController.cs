@@ -2,7 +2,9 @@
 using Ns.Utility.Core.Model.Ranges;
 using Ns.Utility.Framework.Data.Contract;
 using Ns.Utility.Web.Areas.Admin.Models;
+using Ns.Utility.Web.Framework;
 using Ns.Utility.Web.Framework.Mapper;
+using Ns.Utility.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,22 +18,14 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
 {
     public class RangeController : Controller
     {
-        private IRepository<Project> repository;
-        private ICollectionModelMapper<Project, ProjectModel> mapper;
-
-        public RangeController(IRepository<Project> repository, ICollectionModelMapper<Project, ProjectModel> mapper)
-        {
-            this.repository = repository;
-            this.mapper = mapper;
-        }
         public ActionResult List()
         {
             return View();
         }
 
-        public ActionResult AddEdit()
+        public async Task<ActionResult> AddEdit()
         {
-            var projects = mapper.Map(repository.GetAll());
+            var projects = await ApiUtility.GetAsync<ProjectModel>(Services.Projects);
             var model = new RangeModel();
             model.Projects.AddRange(projects);
             return View(model);
@@ -40,14 +34,10 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> AddEdit(RangeModel model)
         {
-            using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
+            var response = await ApiUtility.PostAsync<RangeModel>(Services.Ranges, model);
+            if (response)
             {
-                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseUrl"]);
-                var response = await client.PostAsJsonAsync<RangeModel>("api/ranges", model);
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("List");
-                }
+                return RedirectToAction("List");
             }
 
             return View();

@@ -1,8 +1,12 @@
 ﻿@model Ns.Utility.Web.Models.TermModel
+@using Ns.Utility.Web.Framework.Security
+@using System.Security.Claims
 @{
     ViewBag.Title = "AddEdit";
 }
-
+@{
+    IUserSession session = new UserSession(User as ClaimsPrincipal);
+}
 <div class="panel panel-default form-top">
     <div class="panel-heading">
         <h3 class="panel-title">Aprimo Terms</h3>
@@ -13,10 +17,20 @@
             <div class="form-group">
                 @Html.LabelFor(x => x.Key, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">
-                    @Html.TextBoxFor(x => x.Key, new { @class = "form-control", placeholder = "Next ID", disabled = "disabled" })
+                    @Html.TextBoxFor(x => x.Key, new { @class = "form-control", placeholder = "Next ID", @readonly = "readonly" })
                     @Html.ValidationMessageFor(x => x.Key)
                 </div>
             </div>
+            if (!session.ProjectID.HasValue)
+            {
+                <div class="form-group">
+                    @Html.LabelFor(x => x.ProjectId, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(x => x.ProjectId, Model.Projects.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control", placeholder = "Select Project" })
+                        @Html.ValidationMessageFor(x => x.ProjectId)
+                    </div>
+                </div>
+            }
             <div class="form-group">
                 @Html.LabelFor(x => x.Text, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">

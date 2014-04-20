@@ -15,7 +15,7 @@
     <AssemblyName>Ns.Utility.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
@@ -156,6 +156,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\RangesController.cs" />
     <Compile Include="Areas\Admin\Models\RangeModel.cs" />
+    <Compile Include="Controllers\Api\ResourcesController.cs" />
     <Compile Include="Controllers\Api\TermsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\TermController.cs" />
+    <Compile Include="Framework\ApiUtility.cs" />
     <Compile Include="Framework\Api\ActionResults\ModelActionResult.cs" />
     <Compile Include="Framework\Api\ApiControllerBase.cs" />
     <Compile Include="Framework\Api\Filters\AuthenticateAttribute.cs" />
@@ -202,6 +204,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\ProjectModel.cs" />
+    <Compile Include="Models\ResourceModel.cs" />
+    <Compile Include="Models\Services.cs" />
     <Compile Include="Models\TermModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -444,8 +448,12 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\grid.export.js" />
+    <Content Include="Scripts\app\grid.selectall.js" />
+    <Content Include="Scripts\app\grid.preview.js" />
     <Content Include="Scripts\app\project.js" />
     <Content Include="Scripts\app\range.js" />
+    <Content Include="Scripts\app\resource.js" />
     <Content Include="Scripts\app\smart.common.js" />
     <Content Include="Scripts\app\smart.server.js" />
     <Content Include="Scripts\app\term.js" />
@@ -1040,7 +1048,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3784</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/utility</IISUrl>
+          <IISUrl>http://localhost:3784/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

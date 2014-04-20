@@ -28,9 +28,11 @@ namespace Ns.Utility.Web
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/kendo/2014.1.318/kendo.web.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/app/smart.*"));
+            bundles.Add(new ScriptBundle("~/bundles/grid").Include("~/Scripts/app/grid.*"));
             bundles.Add(new ScriptBundle("~/bundles/project").Include("~/Scripts/app/project.js"));
             bundles.Add(new ScriptBundle("~/bundles/term").Include("~/Scripts/app/term.js"));
             bundles.Add(new ScriptBundle("~/bundles/range").Include("~/Scripts/app/range.js"));
+            bundles.Add(new ScriptBundle("~/bundles/resource").Include("~/Scripts/app/resource.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
