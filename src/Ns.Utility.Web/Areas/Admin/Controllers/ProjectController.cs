@@ -20,16 +20,28 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddEdit(int id)
+        public async Task<ActionResult> AddEdit(int? id)
         {
-            var project = await ApiUtility.GetAsync<ProjectModel>(string.Format("{0}/{1}", Services.Projects, id));
-            return View(project.FirstOrDefault());
+            ProjectModel model = new ProjectModel();
+            if(id.HasValue)
+            model = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, id.Value);
+
+            return View(model);
         }
 
         [HttpPost]
         public async Task<ActionResult> AddEdit(ProjectModel model)
         {
-            var response = await ApiUtility.PostAsync<ProjectModel>(Services.Projects, model);
+            bool response = false;
+            if(model.IsNew)
+            {
+                response = await ApiUtility.PostAsync<ProjectModel>(Services.Projects, model);
+            }
+            else
+            {
+                response = await ApiUtility.PutAsync<ProjectModel>(Services.Projects, model);
+            }
+
             if (response)
             {
                 return RedirectToAction("List");

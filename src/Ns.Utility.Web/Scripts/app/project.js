@@ -5,19 +5,12 @@
     $("#grid").kendoGrid({
         dataSource: dataSource,
         height: 380,
-        filterable: false,
-        sortable: true,
         pageable: true,
         columns: [
             {
-                headerTemplate: "<input type=\"checkbox\" class=\"checkbox-all\"/>",
-                template: "<input type=\"checkbox\" class=\"k-checkbox\" value=\"#=Id#\"/>",
-                width: "40px"
-            },
-            {
                 field: "Id",
                 title: "Project ID",
-                width: "140px"
+                width: "80px"
             },
             {
                 field: "Name",
@@ -25,7 +18,7 @@
             },
             {
                 field: "Code",
-                title: "Project Code"
+                title: "Project Code",
             },
             {
                 field: "Description",
@@ -33,11 +26,13 @@
             },
             {
                 title: "Action",
-                template: "<a href='AddEdit/#=Id#'>Edit</a>"
+                template: "<a href='AddEdit/#=Id#'>Edit</a>",
+                width: "80px"
             },
             {
                 command: { text: "Delete", click: grid.deleteRow },
-                title: "Delete"
+                title: "Delete",
+                width: "120px"
             }
         ]
     });

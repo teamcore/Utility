@@ -1,18 +1,17 @@
 ﻿
 executeOnServer = function (model, url, type, onsucess, onerror) {
+    if (type === 'DELETE')
+    {
+        url += "/" + model;
+    }
 
     $.ajax({
-        beforeSend: function (xhr) {
-            var authtoken = $.cookie('Authorization-Token');
-            xhr.setRequestHeader("Authorization-Token", authtoken);
-        },
         url: url,
         type: type,
-        data: (type === 'GET' || type === 'DELETE') ? {} : ko.mapping.toJSON(model),
+        data: (type === 'GET' || type === 'DELETE') ? {} : model,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            ko.mapping.fromJS(data, model);
             if (onsucess) {
                 onsucess();
             }
@@ -35,11 +34,7 @@ prepareDataSource = function (url) {
         type: "json",
         transport: {
             read: {
-                url: url,
-                beforeSend: function (xhr) {
-                    var authtoken = $.cookie('Authorization-Token');
-                    xhr.setRequestHeader("Authorization-Token", authtoken);
-                }
+                url: url
             }
         },
         schema: {
@@ -68,11 +63,7 @@ prepareDataSource = function (url, id) {
         transport: {
             read: {
                 url: url,
-                data: { id: id },
-                beforeSend: function (xhr) {
-                    var authtoken = $.cookie('Authorization-Token');
-                    xhr.setRequestHeader("Authorization-Token", authtoken);
-                }
+                data: { id: id }
             }
         },
         schema: {

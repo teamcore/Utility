@@ -10,6 +10,15 @@
     <div class="panel-body">
         @using (Html.BeginForm("AddEdit", "Project", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
+            if(!Model.IsNew)
+            {
+                <div class="form-group">
+                @Html.LabelFor(x => x.Id, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            }
             <div class="form-group">
                 @Html.LabelFor(x => x.Name, new { @class = "col-md-2 control-label" })
                 <div class="col-md-5">
@@ -33,8 +42,8 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-5">
-                    <button type="submit" class=" btn btn-default">Submit</button>
-                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    @Html.ActionLink("Cancel", "List", "Project", null, new { area = "Admin", @class = "btn btn-default" })
                 </div>
             </div>
         }

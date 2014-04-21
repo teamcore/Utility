@@ -52,6 +52,7 @@ namespace Ns.Utility.Web.Framework.Api
             return models;
         }
 
+        [Route("{take:int}/{skip:int}/{page:int}/{pageSize:int}")]
         public virtual KendoResult<TModel> Get(int take, int skip, int page, int pageSize)
         {
             var count = repository.GetAll().Count();
@@ -73,15 +74,12 @@ namespace Ns.Utility.Web.Framework.Api
             var entity = repository.FindOne(x => x.Id == model.Id);
             mapper.Update(updatedEntity, entity);
             repository.Update(entity);
-            //var modelResult = mapper.Map(entity);
-            //return new ModelActionResult<TModel>(modelResult, Request);
         }
 
         [Transaction]
         public virtual void Delete(int id)
         {
             repository.Delete(id);
-            //return new TextActionResult("Deleted successfully.", Request);
         }
     }
 }

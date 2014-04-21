@@ -11,12 +11,6 @@ grid.deleteRow = function (e) {
     }
 };
 
-grid.deleteRows = function (ids) {
-    executeOnServer(ids, window.feedUrl, 'DELETE', function () {
-        location.reload();
-    });
-};
-
 grid.select = function (kGrid) {
     var IDs = [];
     kGrid.table.find("tr").each(function () {
