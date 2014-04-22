@@ -35,6 +35,11 @@
                 title: "Edit",
                 template: "<a href='AddEdit/#=Id#'>Edit</a>",
                 width: "70px"
+            },
+            {
+                command: { text: "Delete", click: grid.deleteRow },
+                title: "Delete",
+                width: "120px"
             }
         ]
     });

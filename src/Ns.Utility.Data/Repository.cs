@@ -52,7 +52,7 @@ namespace Ns.Utility.Data
         public T Get(int id)
         {
             var query = AsQueryable();
-            return query.Single(x => x.Id == id);
+            return query.FirstOrDefault(x => x.Id == id);
         }
 
         public IList<T> GetAll()

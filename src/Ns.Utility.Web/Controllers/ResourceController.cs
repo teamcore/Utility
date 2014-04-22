@@ -18,11 +18,21 @@ namespace Ns.Utility.Web.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddEdit()
+        public async Task<ActionResult> AddEdit(int? id)
         {
-            var projects = await ApiUtility.GetAsync<ProjectModel>(Services.Projects);
             var model = new ResourceModel();
-            model.Projects.AddRange(projects);
+            if(id.HasValue)
+            {
+                model = await ApiUtility.GetAsyncById<ResourceModel>(Services.Resources, id.Value);
+                var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
+                model.Projects.Add(project);
+            }
+            else
+            {
+                var projects = await ApiUtility.GetAsync<ProjectModel>(Services.Projects);
+                model.Projects.AddRange(projects);
+            }
+            
             return View(model);
         }
 

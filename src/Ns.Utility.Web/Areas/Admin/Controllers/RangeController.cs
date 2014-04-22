@@ -26,7 +26,6 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
         public async Task<ActionResult> AddEdit(int? id)
         {
             RangeModel model = new RangeModel();
-            IEnumerable<ProjectModel> projects;
 
             if(id.HasValue)
             {
@@ -36,7 +35,7 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
             }
             else
             {
-                projects = await ApiUtility.GetAsync<ProjectModel>(Services.ProjectsHasNoRange);
+                var projects = await ApiUtility.GetAsync<ProjectModel>(Services.ProjectsHasNoRange);
                 model.Projects.AddRange(projects);
             }
             

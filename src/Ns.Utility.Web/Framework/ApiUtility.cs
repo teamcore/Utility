@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
@@ -21,7 +22,7 @@ namespace Ns.Utility.Web.Framework
 
         public static async Task<IEnumerable<T>> GetAsync<T>(string relativeUrl)
         {
-            IEnumerable<T> result = default(IEnumerable<T>);
+            IEnumerable<T> result = new Collection<T>();
             using (var client = GetClient())
             {
                 var response = await client.GetAsync(relativeUrl);
