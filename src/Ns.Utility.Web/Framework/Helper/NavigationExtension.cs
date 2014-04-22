@@ -25,6 +25,7 @@ namespace Ns.Utility.Web.Framework.Helper
         {
             string baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             string urlFormat = baseUrl.EndsWith("/") ? "{0}{1}" : "{0}/{1}";
+            relativeUrl = relativeUrl.StartsWith("/") ? relativeUrl.Substring(1) : relativeUrl;
             baseUrl = string.Format(urlFormat, baseUrl, relativeUrl);
             return MvcHtmlString.Create(baseUrl);
         }

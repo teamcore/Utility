@@ -60,10 +60,14 @@
             return;
         }
 
-        $("#grid").addClass('hidden');
-        $("#grid-buttons").addClass('hidden');
-        $("#preview-buttons").removeClass('hidden');
-        $("#code-container").removeClass('hidden');
+        executeOnServer(IDs, window.feedUrl + '/script', 'POST', function (data) {
+            var formattedScript = data.replace(/\\n/g, "<br />");
+            $("#code-line").html(formattedScript);
+            $("#grid").addClass('hidden');
+            $("#grid-buttons").addClass('hidden');
+            $("#preview-buttons").removeClass('hidden');
+            $("#code-container").removeClass('hidden');
+        });
     });
 
     $("#back").click(function () {

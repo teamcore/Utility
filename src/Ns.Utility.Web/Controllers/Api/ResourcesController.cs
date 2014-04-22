@@ -13,6 +13,7 @@ using System.Web.Http;
 
 namespace Ns.Utility.Web.Controllers.Api
 {
+    [RoutePrefix("api/resources")]
     public class ResourcesController : ApiControllerBase<Resource, ResourceModel>
     {
         private readonly IRepository<Range> rangeRepository;
@@ -20,6 +21,19 @@ namespace Ns.Utility.Web.Controllers.Api
             : base(repository, mapper)
         {
             this.rangeRepository = rangeRepository;
+        }
+
+        [Route("script")]
+        public IHttpActionResult Post(IList<int> ids)
+        {
+            var entities = repository.AsQueryable().Where(x => ids.Contains(x.Id));
+            var script = string.Empty;
+            foreach (var entity in entities)
+            {
+                script += entity.Generate(true);
+            }
+
+            return Ok(script);
         }
 
         public override void Post(ResourceModel model)

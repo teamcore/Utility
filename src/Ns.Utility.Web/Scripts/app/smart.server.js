@@ -8,12 +8,12 @@ executeOnServer = function (model, url, type, onsucess, onerror) {
     $.ajax({
         url: url,
         type: type,
-        data: (type === 'GET' || type === 'DELETE') ? {} : model,
+        data: (type === 'GET' || type === 'DELETE') ? {} : JSON.stringify(model),
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             if (onsucess) {
-                onsucess();
+                onsucess(data);
             }
         },
         error: function (error) {

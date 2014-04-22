@@ -24,7 +24,8 @@ namespace Ns.Utility.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/toastr.js",
-                      "~/Scripts/jquery.cookie.js"));
+                      "~/Scripts/jquery.cookie.js",
+                      "~/Scripts/json2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/kendo/2014.1.318/kendo.web.min.js", "~/Scripts/app/kendo.*"));
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/app/smart.*"));

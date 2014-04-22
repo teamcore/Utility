@@ -20,7 +20,7 @@ namespace Ns.Utility.Web.Models
         public string Key { get; set; }
 
         [Required]
-        [Display(Name = "Resource")]
+        [Display(Name = "Resource Text")]
         public string Text { get; set; }
         public string Description { get; set; }
 
