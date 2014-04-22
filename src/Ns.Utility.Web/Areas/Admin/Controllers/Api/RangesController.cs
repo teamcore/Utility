@@ -1,5 +1,6 @@
 ﻿using Ns.Utility.Core.Model.Ranges;
 using Ns.Utility.Framework.Data.Contract;
+using Ns.Utility.Framework.DomainModel.Events;
 using Ns.Utility.Web.Areas.Admin.Models;
 using Ns.Utility.Web.Framework.Api;
 using Ns.Utility.Web.Framework.Mapper;
@@ -18,6 +19,17 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers.Api
             : base(repository, mapper)
         {
 
+        }
+
+        public override void Post(RangeModel model)
+        {
+            base.Post(model);
+            DomainEvents.Raise<RangeCreated>(new RangeCreated(model.ProjectId));
+        }
+
+        public override void Delete(int id)
+        {
+            base.Delete(id);
         }
     }
 }

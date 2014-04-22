@@ -1,5 +1,4 @@
 ﻿using System.Web;
-using Ns.Utility.Framework.Events;
 using Ns.Utility.Framework.Fakes;
 using Ns.Utility.Framework.IO;
 using Ns.Utility.Framework.Logger;

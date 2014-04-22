@@ -8,6 +8,7 @@ namespace Ns.Utility.Web.Models
     public class Services
     {
         public const string Projects = "api/projects";
+        public const string ProjectsHasNoRange = "api/projects/norange";
         public const string Ranges = "api/ranges";
         public const string Terms = "api/terms";
         public const string Resources = "api/resources";

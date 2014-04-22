@@ -32,7 +32,7 @@ namespace Ns.Utility.Web.Framework.Api
         }
 
         [Route("{id:int}")]
-        public virtual IHttpActionResult GetById(int id)
+        public virtual IHttpActionResult Get(int id)
         {
             var entity = repository.Get(id);
             if(entity == null)
@@ -45,10 +45,10 @@ namespace Ns.Utility.Web.Framework.Api
         }
 
         [Route("")]
-        public virtual IEnumerable<TModel> GetAll()
+        public virtual IEnumerable<TModel> Get()
         {
-            var entities = repository.GetAll().OrderBy(x => x.Id);
-            var models = mapper.Map(entities).AsQueryable();
+            var entities = repository.GetAll().OrderByDescending(x => x.Id);
+            var models = mapper.Map(entities);
             return models;
         }
 

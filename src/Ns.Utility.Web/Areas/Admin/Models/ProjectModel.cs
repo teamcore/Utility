@@ -12,5 +12,7 @@ namespace Ns.Utility.Web.Areas.Admin.Models
         public string Code { get; set; }
 
         public string Description { get; set; }
+
+        public bool HasRange { get; set; }
     }
 }

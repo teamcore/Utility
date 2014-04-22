@@ -51,8 +51,10 @@
     <Compile Include="Model\Projects\IProjectFactory.cs" />
     <Compile Include="Model\Projects\Project.cs" />
     <Compile Include="Model\Projects\ProjectFactory.cs" />
+    <Compile Include="Model\Projects\RangeCreatedHandler.cs" />
     <Compile Include="Model\Ranges\IRangeFactory.cs" />
     <Compile Include="Model\Ranges\Range.cs" />
+    <Compile Include="Model\Ranges\RangeCreated.cs" />
     <Compile Include="Model\Ranges\RangeExhaustedException.cs" />
     <Compile Include="Model\Ranges\RangeFactory.cs" />
     <Compile Include="Model\Resources\IResourceFactory.cs" />

@@ -166,9 +166,6 @@
     <Compile Include="EngineContext.cs" />
     <Compile Include="EnumKeyValue.cs" />
     <Compile Include="EventBroker.cs" />
-    <Compile Include="Events\DomainEvents.cs" />
-    <Compile Include="Events\IDomainEvent.cs" />
-    <Compile Include="Events\IHandles.cs" />
     <Compile Include="Exceptions\CounterNotFoundException.cs" />
     <Compile Include="Exceptions\FunctionalException.cs" />
     <Compile Include="Exceptions\RSACryptoException.cs" />

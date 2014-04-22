@@ -23,11 +23,23 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddEdit()
+        public async Task<ActionResult> AddEdit(int? id)
         {
-            var projects = await ApiUtility.GetAsync<ProjectModel>(Services.Projects);
-            var model = new RangeModel();
-            model.Projects.AddRange(projects);
+            RangeModel model = new RangeModel();
+            IEnumerable<ProjectModel> projects;
+
+            if(id.HasValue)
+            {
+                model = await ApiUtility.GetAsyncById<RangeModel>(Services.Ranges, id.Value);
+                var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
+                model.Projects.Add(project);
+            }
+            else
+            {
+                projects = await ApiUtility.GetAsync<ProjectModel>(Services.ProjectsHasNoRange);
+                model.Projects.AddRange(projects);
+            }
+            
             return View(model);
         }
 

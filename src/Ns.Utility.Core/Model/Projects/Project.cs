@@ -20,11 +20,17 @@ namespace Ns.Utility.Core.Model.Projects
             Name = name;
             Code = code;
             Description = description;
+            HasRange = false;
         }
 
         public string Name { get; private set; }
         public string Code { get; private set; }
         public string Description { get; private set; }
+        public bool HasRange { get; private set; }
 
+        public void AssignRange()
+        {
+            HasRange = true;
+        }
     }
 }

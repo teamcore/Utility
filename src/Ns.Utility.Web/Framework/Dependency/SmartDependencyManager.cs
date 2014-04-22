@@ -17,6 +17,9 @@ using Ns.Utility.Web.Framework.Mvc;
 using Ns.Utility.Web.Framework.Security;
 using System.Threading;
 using System.Security.Principal;
+using Ns.Utility.Core.Model.Ranges;
+using Ns.Utility.Framework.DomainModel.Events;
+using Ns.Utility.Core.Model.Projects;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -34,7 +37,8 @@ namespace Ns.Utility.Web.Framework.Dependency
             builder.RegisterGeneric(typeof(ModelMapper<,>)).As(typeof(IModelMapper<,>));
             builder.RegisterGeneric(typeof(CollectionModelMapper<,>)).As(typeof(ICollectionModelMapper<,>));
             builder.Register(x => new UserSession(Thread.CurrentPrincipal as SmartPrincipal)).As<IUserSession>();
-            //builder.RegisterType<UserSession>().As<IUserSession>().PropertiesAutowired();
+            builder.RegisterType<RangeCreatedHandler>().As<IHandles<RangeCreated>>().SingleInstance();
+            //builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(RangeCreatedHandler))).As(typeof(IHandles<>));
         }
     }
 }
