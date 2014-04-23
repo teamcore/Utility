@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -66,12 +67,18 @@ namespace Ns.Utility.Web.Controllers
         [HttpPost]
         public ActionResult Preview(IList<int> ids)
         {
-            return RedirectToAction("Preview");
+            return View();
         }
 
-        public ActionResult Preview()
+        [HttpPost]
+        public async Task<FileContentResult> Export(IList<int> ids)
         {
-            return View();
+            string script = await ApiUtility.PostAsync<IList<int>, string>(Services.ResourcesScript, ids);
+            byte[] file = Encoding.ASCII.GetBytes(script);
+            string filename = "sqlstript.sql";
+            Response.Buffer = true;
+            Response.AddHeader("Content-Disposition", string.Format("attachment; filename={0}", filename));
+            return File(file, "plain/text", filename);
         }
 	}
 }

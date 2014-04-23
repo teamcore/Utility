@@ -460,6 +460,7 @@
     <Content Include="Scripts\app\range.js" />
     <Content Include="Scripts\app\resource.js" />
     <Content Include="Scripts\app\smart.common.js" />
+    <Content Include="Scripts\app\smart.formPost.js" />
     <Content Include="Scripts\app\smart.server.js" />
     <Content Include="Scripts\app\term.js" />
     <Content Include="Scripts\bootstrap.js" />

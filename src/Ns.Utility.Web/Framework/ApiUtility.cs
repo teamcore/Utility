@@ -70,6 +70,18 @@ namespace Ns.Utility.Web.Framework
             return result;
         }
 
+        public static async Task<R> PostAsync<T, R>(string relativeUrl, T model)
+        {
+            R result = default(R);
+            using (var client = GetClient())
+            {
+                var response = await client.PostAsJsonAsync<T>(relativeUrl, model);
+                result = response.Content.ReadAsAsync<R>().Result;
+            }
+
+            return result;
+        }
+
         public static async Task<bool> PutAsync<T>(string relativeUrl, T model)
         {
             var result = false;

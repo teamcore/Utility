@@ -11,8 +11,10 @@ namespace Ns.Utility.Core.Model.Resources
     [DomainSignature]
     public class Resource : Entity
     {
-        const string INSERT_SCRIPT = @"INSERT INTO replacement_string_table VALUES ({0}, '{1}', 1, 1);\nINSERT INTO completed_strings VALUES ({0}, 1, '{1}');\n";
-        const string DELETE_SCRIPT = @"\nDELETE FROM replacement_string_table WHERE replacement_string_id = {0};\nDELETE FROM completed_strings WHERE replacement_string_id = {0};\n";
+        const string INSERT_SCRIPT = @"INSERT INTO replacement_string_table VALUES ({0}, '{1}', 1, 1);
+INSERT INTO completed_strings VALUES ({0}, 1, '{1}');";
+        const string DELETE_SCRIPT = @"DELETE FROM replacement_string_table WHERE replacement_string_id = {0};
+DELETE FROM completed_strings WHERE replacement_string_id = {0};";
 
         protected Resource()
         {
@@ -40,7 +42,10 @@ namespace Ns.Utility.Core.Model.Resources
                 script = string.Format(DELETE_SCRIPT, Key);
             }
 
+            script += Environment.NewLine;
             script += string.Format(INSERT_SCRIPT, Key, Text);
+            script += Environment.NewLine;
+            script += Environment.NewLine;
             return script;
         }
     }
