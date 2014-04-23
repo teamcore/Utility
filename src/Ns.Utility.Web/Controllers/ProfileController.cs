@@ -28,7 +28,10 @@ namespace Ns.Utility.Web.Controllers
             if(!model.IsNew)
             {
                 var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
-                model.ProjectName = project.Name;
+                if (project != null)
+                {
+                    model.ProjectName = project.Name;
+                }
             }
             return View(model);
         }

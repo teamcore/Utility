@@ -33,8 +33,11 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
                 if (!model.IsNew)
                 {
                     var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
-                    model.ProjectName = project.Name;
-                    model.Projects.Add(project);
+                    if (project != null)
+                    {
+                        model.ProjectName = project.Name;
+                        model.Projects.Add(project);
+                    }
                 }
             }
             else
