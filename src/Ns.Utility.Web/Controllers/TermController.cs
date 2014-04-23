@@ -18,23 +18,45 @@ namespace Ns.Utility.Web.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddEdit()
+        public async Task<ActionResult> AddEdit(int? id)
         {
-            var projects = await ApiUtility.GetAsync<ProjectModel>(Services.Projects);
             var model = new TermModel();
-            model.Projects.AddRange(projects);
+            if (id.HasValue)
+            {
+                model = await ApiUtility.GetAsyncById<TermModel>(Services.Terms, id.Value);
+                if (!model.IsNew)
+                {
+                    var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
+                    model.ProjectName = project.Name;
+                    model.Projects.Add(project);
+                }
+            }
+            else
+            {
+                var projects = await ApiUtility.GetAsync<ProjectModel>(Services.Projects);
+                model.Projects.AddRange(projects);
+            }
+
             return View(model);
         }
 
         [HttpPost]
         public async Task<ActionResult> AddEdit(TermModel model)
         {
-            var response = await ApiUtility.PostAsync<TermModel>(Services.Terms, model);
+            bool response = false;
+            if (model.IsNew)
+            {
+                response = await ApiUtility.PostAsync<TermModel>(Services.Terms, model);
+            }
+            else
+            {
+                response = await ApiUtility.PutAsync<TermModel>(Services.Terms, model);
+            }
+
             if (response)
             {
                 return RedirectToAction("List");
             }
-
             return View(model);
         }
 	}

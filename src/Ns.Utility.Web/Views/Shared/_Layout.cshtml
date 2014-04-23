@@ -78,7 +78,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="glyphicon glyphicon-user"></b> @User.Identity.Name</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Settings</a></li>
+                                <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>
                             </ul>
                         </li>
                     }

@@ -24,8 +24,12 @@ namespace Ns.Utility.Web.Controllers
             if(id.HasValue)
             {
                 model = await ApiUtility.GetAsyncById<ResourceModel>(Services.Resources, id.Value);
-                var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
-                model.Projects.Add(project);
+                if (!model.IsNew)
+                {
+                    var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
+                    model.ProjectName = project.Name;
+                    model.Projects.Add(project);
+                }
             }
             else
             {
@@ -39,8 +43,17 @@ namespace Ns.Utility.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> AddEdit(ResourceModel model)
         {
-            var response = await ApiUtility.PostAsync<ResourceModel>(Services.Resources, model);
-            if(response)
+            bool response = false;
+            if (model.IsNew)
+            {
+                response = await ApiUtility.PostAsync<ResourceModel>(Services.Resources, model);
+            }
+            else
+            {
+                response = await ApiUtility.PutAsync<ResourceModel>(Services.Resources, model);
+            }
+
+            if (response)
             {
                 return RedirectToAction("List");
             }

@@ -20,6 +20,7 @@ using System.Security.Principal;
 using Ns.Utility.Core.Model.Ranges;
 using Ns.Utility.Framework.DomainModel.Events;
 using Ns.Utility.Core.Model.Projects;
+using System.Security.Claims;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -36,8 +37,10 @@ namespace Ns.Utility.Web.Framework.Dependency
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(ModelMapper<,>)).As(typeof(IModelMapper<,>));
             builder.RegisterGeneric(typeof(CollectionModelMapper<,>)).As(typeof(ICollectionModelMapper<,>));
-            builder.Register(x => new UserSession(Thread.CurrentPrincipal as SmartPrincipal)).As<IUserSession>();
+            //builder.Register(x => new UserSession(Thread.CurrentPrincipal as SmartPrincipal)).As<IUserSession>();
+            //builder.Register(x => new UserSession(HttpContext.Current.User as ClaimsPrincipal)).As<IUserSession>();
             builder.RegisterType<RangeCreatedHandler>().As<IHandles<RangeCreated>>().SingleInstance();
+            builder.RegisterType<SessionHelper>().As<SessionHelper>().SingleInstance();
             //builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(RangeCreatedHandler))).As(typeof(IHandles<>));
         }
     }

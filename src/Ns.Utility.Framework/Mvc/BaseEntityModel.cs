@@ -1,7 +1,9 @@
-﻿namespace Ns.Utility.Framework.Mvc
+﻿using System.ComponentModel.DataAnnotations;
+namespace Ns.Utility.Framework.Mvc
 {
     public abstract class BaseEntityModel : BaseModel
     {
+        [Display(Name = "ID")]
         public int Id { get; set; }
         public byte[] Version { get; set; }
 

@@ -147,6 +147,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\ProjectsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RangeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
@@ -178,8 +181,10 @@
     <Compile Include="Framework\Api\Filters\TransactionAttribute.cs" />
     <Compile Include="Framework\Api\Filters\ValidationFilterAttribute.cs" />
     <Compile Include="Framework\Api\Handler\AuthenticationHandler.cs" />
+    <Compile Include="Framework\Mvc\AdminController.cs" />
     <Compile Include="Framework\Mvc\AuthenticationFilterAttribute.cs" />
     <Compile Include="Framework\Mvc\BaseViewModel.cs" />
+    <Compile Include="Framework\Mvc\UtilityController.cs" />
     <Compile Include="Framework\Security\ISmartPrincipal.cs" />
     <Compile Include="Framework\Security\SmartClaimTypes.cs" />
     <Compile Include="Framework\Dependency\SmartDependencyManager.cs" />
@@ -198,6 +203,7 @@
     <Compile Include="Framework\Mvc\PagedListModel.cs" />
     <Compile Include="Framework\Mvc\PageTitleBuilder.cs" />
     <Compile Include="Framework\Security\IUserSession.cs" />
+    <Compile Include="Framework\Security\SessionHelper.cs" />
     <Compile Include="Framework\Security\SmartPrincipal.cs" />
     <Compile Include="Framework\Security\UserSession.cs" />
     <Compile Include="Global.asax.cs">
@@ -1010,6 +1016,8 @@
     <Content Include="Scripts\kendo\2014.1.318\kendo.autocomplete.min.js.map" />
     <Content Include="Scripts\kendo\2014.1.318\jquery.min.map" />
     <Content Include="Views\Resource\Preview.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ns.Utility.Application\Ns.Utility.Application.csproj">

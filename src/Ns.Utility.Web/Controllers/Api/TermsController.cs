@@ -1,4 +1,5 @@
-﻿using Ns.Utility.Core.Model.Resources;
+﻿using Ns.Utility.Core.Model.Ranges;
+using Ns.Utility.Core.Model.Resources;
 using Ns.Utility.Framework.Data.Contract;
 using Ns.Utility.Web.Framework.Api;
 using Ns.Utility.Web.Framework.Mapper;
@@ -14,9 +15,20 @@ namespace Ns.Utility.Web.Controllers.Api
 {
     public class TermsController : ApiControllerBase<Term, TermModel>
     {
-        public TermsController(IRepository<Term> repository, ICollectionModelMapper<Term, TermModel> mapper)
+        private readonly IRepository<Range> rangeRepository;
+
+        public TermsController(IRepository<Term> repository, IRepository<Range> rangeRepository, ICollectionModelMapper<Term, TermModel> mapper)
             : base(repository, mapper)
         {
+            this.rangeRepository = rangeRepository;
+        }
+
+        public override void Post(TermModel model)
+        {
+            var range = rangeRepository.FindOne(x => x.ProjectId == model.ProjectId);
+            model.Key = range.GetNextId().ToString();
+            var entity = mapper.Map(model);
+            repository.Add(entity);
         }
     }
 }

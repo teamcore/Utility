@@ -9,10 +9,12 @@ namespace Ns.Utility.Web.Framework.Security
 {
     public interface IUserSession
     {
+        int UserId { get; }
         string UserName { get; }
         string DisplayName { get; }
         bool IsAdmin { get; }
         string ProjectName { get; }
-        int? ProjectID { get; }
+        int ProjectID { get; }
+        bool HasProject { get; }
     }
 }

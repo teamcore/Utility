@@ -30,15 +30,16 @@
                     @Html.ValidationMessageFor(x => x.Key)
                 </div>
             </div>
-            if (!session.ProjectID.HasValue)
+            if (!session.HasProject)
             {
                 if (!Model.IsNew)
                 {
+                    @Html.HiddenFor(x => x.ProjectId)
                     <div class="form-group">
-                        @Html.LabelFor(x => x.ProjectId, new { @class = "col-md-2 control-label" })
+                        @Html.LabelFor(x => x.ProjectName, new { @class = "col-md-2 control-label" })
                         <div class="col-md-5">
-                            @Html.DropDownListFor(x => x.ProjectId, Model.Projects.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(x => x.ProjectId)
+                            @Html.TextBoxFor(x => x.ProjectName, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(x => x.ProjectName)
                         </div>
                     </div>
                 }

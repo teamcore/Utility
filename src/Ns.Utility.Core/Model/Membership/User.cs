@@ -4,6 +4,7 @@ using Ns.Utility.Framework.DomainModel;
 using Ns.Utility.Framework.Exceptions;
 using Ns.Utility.Framework.Security;
 using Ns.Utility.Framework.Settings;
+using Ns.Utility.Core.Model.Projects;
 
 namespace Ns.Utility.Core.Model.Membership
 {
@@ -49,18 +50,11 @@ namespace Ns.Utility.Core.Model.Membership
         public bool IsAdmin { get; private set; }
         public bool IsLoggedIn { get; private set; }
         public DateTime? LastLoginDate { get; private set; }
+        public int ProjectId { get; private set; }
         
         #endregion
 
         #region Method
-
-        /// <summary>
-        /// Logouts this instance.
-        /// </summary>
-        public void Logout()
-        {
-            IsLoggedIn = false;
-        }
 
         #endregion
     }

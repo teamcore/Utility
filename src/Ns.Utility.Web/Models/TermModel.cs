@@ -17,14 +17,15 @@ namespace Ns.Utility.Web.Models
             Projects = new List<ProjectModel>();
         }
 
-        [Display(Name = "Resource ID")]
+        [Display(Name = "Term ID")]
         public string Key { get; set; }
 
         [Required]
-        [Display(Name = "Term")]
+        [Display(Name = "Term Text")]
         public string Text { get; set; }
         public string Description { get; set; }
         public int ProjectId { get; set; }
+        public string ProjectName { get; set; }
         public List<ProjectModel> Projects { get; private set; }
     }
 }

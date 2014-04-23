@@ -30,8 +30,12 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
             if(id.HasValue)
             {
                 model = await ApiUtility.GetAsyncById<RangeModel>(Services.Ranges, id.Value);
-                var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
-                model.Projects.Add(project);
+                if (!model.IsNew)
+                {
+                    var project = await ApiUtility.GetAsyncById<ProjectModel>(Services.Projects, model.ProjectId);
+                    model.ProjectName = project.Name;
+                    model.Projects.Add(project);
+                }
             }
             else
             {

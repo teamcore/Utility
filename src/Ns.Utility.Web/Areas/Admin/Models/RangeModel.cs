@@ -19,10 +19,7 @@ namespace Ns.Utility.Web.Areas.Admin.Models
 
         public string Description { get; set; }
 
-        [Required]
-        [Display(Name = "Project")]
-        [Range(0, int.MaxValue)]
-        public int ProjectId { get; set; }
+
 
         [Required]
         [Range(0, int.MaxValue)]
@@ -32,6 +29,11 @@ namespace Ns.Utility.Web.Areas.Admin.Models
         [Range(0, int.MaxValue)]
         public int Max { get; set; }
 
+        [Required]
+        [Display(Name = "Project")]
+        [Range(0, int.MaxValue)]
+        public int ProjectId { get; set; }
+        public string ProjectName { get; set; }
         public List<ProjectModel> Projects { get; private set; }
     }
 }
