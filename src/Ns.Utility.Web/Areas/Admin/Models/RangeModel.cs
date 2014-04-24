@@ -28,6 +28,7 @@ namespace Ns.Utility.Web.Areas.Admin.Models
         [Required]
         [Range(0, int.MaxValue)]
         public int Max { get; set; }
+        public int Next { get; set; }
 
         [Required]
         [Display(Name = "Project")]

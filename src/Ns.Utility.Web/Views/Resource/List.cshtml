@@ -3,24 +3,28 @@
     ViewBag.Title = "List";
 }
 
-<div class="form-horizontal form-top">
-    <div id="grid-buttons" class="form-group">
-        <div class="col-md-offset-10 col-md-2">
-            <button class=" btn btn-primary" id="preview">Preview</button>
-            <button class="btn btn-primary" id="export">Export</button>
+<div class="form-top">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="form-inline col-md-6">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control input-sm">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-search"></i> Search</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-primary" id="preview">Preview</button>
+                    <button class="btn btn-sm btn-primary" id="export">Export</button>
+                    @Html.ActionLink("Add New", "AddEdit", "Resource", null, new { area = "", @class = "btn btn-sm btn-primary" })
+                </div>
+            </div>
         </div>
     </div>
-    <div id="grid"></div>
 
-    <div id="preview-buttons" class="form-group hidden">
-        <div class="col-md-offset-10 col-md-2">
-            <button class="btn btn-primary" id="export">Export</button>
-            <button class="btn btn-default" id="back">Back</button>
-        </div>
-    </div>
-    <div id="code-container" class="hidden">
-        <pre id="code-line"></pre>
-    </div>
+    <div id="grid"></div>
 </div>
 
 
@@ -33,7 +37,8 @@
 {
     @Scripts.Render("~/bundles/kendo")
     <script type="text/javascript">
-        var feedUrl = '@Html.BuildUrl("/api/resources")'
+        var apiUrl = '@Html.BuildUrl("/api/resources")'
+        var actionUrl = '@Url.Action("AddEdit", "Resource", new { area = "" })'
     </script>
     @Scripts.Render("~/bundles/resource")
     @Scripts.Render("~/bundles/grid")

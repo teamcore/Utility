@@ -34,6 +34,8 @@ namespace Ns.Utility.Web
             bundles.Add(new ScriptBundle("~/bundles/term").Include("~/Scripts/app/term.js"));
             bundles.Add(new ScriptBundle("~/bundles/range").Include("~/Scripts/app/range.js"));
             bundles.Add(new ScriptBundle("~/bundles/resource").Include("~/Scripts/app/resource.js"));
+            bundles.Add(new ScriptBundle("~/bundles/resource.addedit").Include("~/Scripts/app/resource.addedit.js"));
+            bundles.Add(new ScriptBundle("~/bundles/preview").Include("~/Scripts/app/preview.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

@@ -3,7 +3,26 @@
     ViewBag.Title = "List";
 }
 
-<div class="panel panel-default form-top">
+<div class="form-top">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="form-inline col-md-6">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control input-sm">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-search"></i> Search</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-primary" id="preview">Preview</button>
+                    <button class="btn btn-sm btn-primary" id="export">Export</button>
+                    @Html.ActionLink("Add New", "AddEdit", "Term", null, new { area = "", @class = "btn btn-sm btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="grid"></div>
 </div>
 
@@ -16,7 +35,8 @@
 {
     @Scripts.Render("~/bundles/kendo")
     <script type="text/javascript">
-        var feedUrl = '@Html.BuildUrl("/api/terms")'
+        var apiUrl = '@Html.BuildUrl("/api/terms")'
+        var actionUrl = '@Url.Action("AddEdit", "Term", new { area = "" })'
     </script>
     @Scripts.Render("~/bundles/term")
     @Scripts.Render("~/bundles/grid")

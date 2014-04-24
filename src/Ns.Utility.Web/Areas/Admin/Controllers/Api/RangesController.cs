@@ -26,10 +26,5 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers.Api
             base.Post(model);
             DomainEvents.Raise<RangeCreated>(new RangeCreated(model.ProjectId));
         }
-
-        public override void Delete(int id)
-        {
-            base.Delete(id);
-        }
     }
 }

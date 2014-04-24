@@ -44,7 +44,6 @@ prepareDataSource = function (url) {
         },
         error: function (e) {
             var message = "Http Status Code: " + e.xhr.status + "\nError Message: " + e.xhr.responseText;
-            //Notify("error", e.xhr.statusText, message);
             alert(message);
         },
         pageSize: 10,

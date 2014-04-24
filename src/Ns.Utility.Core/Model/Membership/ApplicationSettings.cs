@@ -23,7 +23,8 @@ namespace Ns.Utility.Core.Model.Membership
                 DefaultPageTitle = "Index",
                 DefaultMetaKeywords = "Nirajan Singh",
                 DefaultMetaDescription = ".NET Developer",
-                PageTitleSeparator = ">>"
+                PageTitleSeparator = ">>",
+                SoftDeleteEnabled = true
             };
         }
 
@@ -33,5 +34,6 @@ namespace Ns.Utility.Core.Model.Membership
         public string DefaultPageTitle { get; set; }
         public string DefaultMetaDescription { get; set; }
         public string DefaultMetaKeywords { get; set; }
+        public bool SoftDeleteEnabled { get; set; }
     }
 }

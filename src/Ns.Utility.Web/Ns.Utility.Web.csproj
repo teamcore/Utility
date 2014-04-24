@@ -210,7 +210,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\ProjectModel.cs" />
+    <Compile Include="Mapper\RangeMapper.cs" />
+    <Compile Include="Mapper\ResourceMapper.cs" />
+    <Compile Include="Mapper\TermMapper.cs" />
     <Compile Include="Models\ResourceModel.cs" />
+    <Compile Include="Models\ScriptModel.cs" />
     <Compile Include="Models\Services.cs" />
     <Compile Include="Models\TermModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -458,7 +462,9 @@
     <Content Include="Scripts\app\grid.helper.js" />
     <Content Include="Scripts\app\project.js" />
     <Content Include="Scripts\app\range.js" />
+    <Content Include="Scripts\app\resource.addedit.js" />
     <Content Include="Scripts\app\resource.js" />
+    <Content Include="Scripts\app\preview.js" />
     <Content Include="Scripts\app\smart.common.js" />
     <Content Include="Scripts\app\smart.formPost.js" />
     <Content Include="Scripts\app\smart.server.js" />

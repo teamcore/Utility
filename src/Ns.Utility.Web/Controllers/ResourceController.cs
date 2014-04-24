@@ -65,9 +65,13 @@ namespace Ns.Utility.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Preview(IList<int> ids)
+        public async Task<ActionResult> Preview(IList<int> ids)
         {
-            return View();
+            var model = new ScriptModel();
+            string script = await ApiUtility.PostAsync<IList<int>, string>(Services.ResourcesScript, ids);
+            model.Script = script;
+            model.ResourceIDs.AddRange(ids);
+            return View(model);
         }
 
         [HttpPost]

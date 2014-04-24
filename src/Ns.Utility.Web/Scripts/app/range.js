@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    var dataSource = prepareDataSource(window.feedUrl);
+    var dataSource = prepareDataSource(window.apiUrl);
 
     $("#grid").kendoGrid({
         dataSource: dataSource,
@@ -27,16 +27,17 @@
                 title: "Maximun Ranage"
             },
             {
+                field: "Next",
+                title: "Next ID"
+            },
+            {
                 field: "Description",
                 title: "Description"
             },
             {
                 title: "Action",
-                template: "<a href='AddEdit/#=Id#'>Edit</a>"
-            },
-            {
-                command: { text: "Delete", click: grid.deleteRow },
-                title: "Delete"
+                command: [{ text: "edit", click: grid.edit }, { text: " Delete", imageClass: "glyphicon glyphicon-trash", click: grid.del }],
+                width: "220px"
             }
         ]
     });

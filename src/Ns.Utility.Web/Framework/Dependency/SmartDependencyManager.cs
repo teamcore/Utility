@@ -21,6 +21,10 @@ using Ns.Utility.Core.Model.Ranges;
 using Ns.Utility.Framework.DomainModel.Events;
 using Ns.Utility.Core.Model.Projects;
 using System.Security.Claims;
+using Ns.Utility.Web.Mapper;
+using Ns.Utility.Web.Models;
+using Ns.Utility.Core.Model.Resources;
+using Ns.Utility.Web.Areas.Admin.Models;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -37,8 +41,10 @@ namespace Ns.Utility.Web.Framework.Dependency
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterGeneric(typeof(ModelMapper<,>)).As(typeof(IModelMapper<,>));
             builder.RegisterGeneric(typeof(CollectionModelMapper<,>)).As(typeof(ICollectionModelMapper<,>));
-            //builder.Register(x => new UserSession(Thread.CurrentPrincipal as SmartPrincipal)).As<IUserSession>();
-            //builder.Register(x => new UserSession(HttpContext.Current.User as ClaimsPrincipal)).As<IUserSession>();
+            builder.RegisterType<ResourceMapper>().As<ICollectionModelMapper<Resource, ResourceModel>>().SingleInstance();
+            builder.RegisterType<TermMapper>().As<ICollectionModelMapper<Term, TermModel>>().SingleInstance();
+            builder.RegisterType<RangeMapper>().As<ICollectionModelMapper<Range, RangeModel>>().SingleInstance();
+
             builder.RegisterType<RangeCreatedHandler>().As<IHandles<RangeCreated>>().SingleInstance();
             builder.RegisterType<SessionHelper>().As<SessionHelper>().SingleInstance();
             //builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(RangeCreatedHandler))).As(typeof(IHandles<>));

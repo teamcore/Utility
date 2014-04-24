@@ -3,7 +3,24 @@
     ViewBag.Title = "List";
 }
 
-<div class="panel panel-default form-top">
+<div class="form-top">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="form-inline col-md-6">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control input-sm">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-search"></i> Search</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    @Html.ActionLink("Add New", "AddEdit", "Range", null, new { area = "Admin", @class = "btn btn-sm btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="grid"></div>
 </div>
 
@@ -16,7 +33,8 @@
 {
     @Scripts.Render("~/bundles/kendo")
     <script type="text/javascript">
-        var feedUrl = '@Html.BuildUrl("api/ranges")'
+        var apiUrl = '@Html.BuildUrl("api/ranges")'
+        var actionUrl = '@Url.Action("AddEdit", "Range", new { area = "Admin" })'
     </script>
     @Scripts.Render("~/bundles/range")
     @Scripts.Render("~/bundles/grid")

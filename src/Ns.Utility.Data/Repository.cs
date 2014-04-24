@@ -52,12 +52,12 @@ namespace Ns.Utility.Data
         public T Get(int id)
         {
             var query = AsQueryable();
-            return query.FirstOrDefault(x => x.Id == id);
+            return query.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         }
 
         public IList<T> GetAll()
         {
-            var query = AsQueryable();
+            var query = AsQueryable().Where(x => x.IsDeleted == false);
             return query.ToList();
         }
 

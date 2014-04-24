@@ -52,7 +52,16 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> AddEdit(RangeModel model)
         {
-            var response = await ApiUtility.PostAsync<RangeModel>(Services.Ranges, model);
+            bool response = false;
+            if (model.IsNew)
+            {
+                response = await ApiUtility.PostAsync<RangeModel>(Services.Ranges, model);
+            }
+            else
+            {
+                response = await ApiUtility.PutAsync<RangeModel>(Services.Ranges, model);
+            }
+
             if (response)
             {
                 return RedirectToAction("List");

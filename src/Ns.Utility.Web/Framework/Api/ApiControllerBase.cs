@@ -10,6 +10,11 @@ using System.Net;
 using Ns.Utility.Web.Framework.Api.ActionResults;
 using System.Collections.Generic;
 using Ns.Utility.Web.Framework.Kendo;
+using Ns.Utility.Web.Framework.Security;
+using System.Security.Claims;
+using Ns.Utility.Framework.Settings;
+using Ns.Utility.Core.Model.Membership;
+using Ns.Utility.Framework;
 
 namespace Ns.Utility.Web.Framework.Api
 {
@@ -19,17 +24,26 @@ namespace Ns.Utility.Web.Framework.Api
     {
         protected readonly IRepository<TEntity> repository;
         protected readonly ICollectionModelMapper<TEntity, TModel> mapper;
+        private readonly IConfigurationProvider<ApplicationSettings> provider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiControllerBase{TEntity, TModel}" /> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
         /// <param name="mapper">The mapper.</param>
-        protected ApiControllerBase(IRepository<TEntity> repository, ICollectionModelMapper<TEntity, TModel> mapper)
+        protected ApiControllerBase(IRepository<TEntity> repository, ICollectionModelMapper<TEntity, TModel> mapper, IConfigurationProvider<ApplicationSettings> provider)
         {
             this.repository = repository;
             this.mapper = mapper;
+            this.provider = provider;
         }
+
+        public ApiControllerBase(IRepository<TEntity> repository, ICollectionModelMapper<TEntity, TModel> mapper)
+            : this(repository, mapper, EngineContext.Current.Resolve<IConfigurationProvider<ApplicationSettings>>())
+        {
+        }
+
+        public IUserSession UserSession { get { return new UserSession(User as ClaimsPrincipal); } }
 
         [Route("{id:int}")]
         public virtual IHttpActionResult Get(int id)
@@ -55,8 +69,8 @@ namespace Ns.Utility.Web.Framework.Api
         [Route("{take:int}/{skip:int}/{page:int}/{pageSize:int}")]
         public virtual KendoResult<TModel> Get(int take, int skip, int page, int pageSize)
         {
-            var count = repository.GetAll().Count();
-            var entities = repository.GetAll().OrderByDescending(x => x.Id).Skip(skip).Take(take);
+            var count = repository.AsQueryable().Where(x => x.IsDeleted == false).Count();
+            var entities = repository.AsQueryable().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Id).Skip(skip).Take(take);
             return new KendoResult<TModel>(mapper.Map(entities), count);
         }
 
@@ -79,7 +93,16 @@ namespace Ns.Utility.Web.Framework.Api
         [Transaction]
         public virtual void Delete(int id)
         {
-            repository.Delete(id);
+            if(provider.Settings.SoftDeleteEnabled)
+            {
+                var entity = repository.FindOne(x => x.Id == id);
+                entity.IsDeleted = true;
+                repository.Update(entity);
+            }
+            else
+            {
+                repository.Delete(id);
+            }
         }
     }
 }
