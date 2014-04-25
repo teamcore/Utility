@@ -38,7 +38,7 @@ namespace Ns.Utility.Web.Controllers.Api
 
         public override void Post(ResourceModel model)
         {
-            var range = rangeRepository.FindOne(x => x.ProjectId == model.ProjectId);
+            var range = rangeRepository.Get(model.ProjectId);
             model.Key = range.GetNextId().ToString();
             var entity = mapper.Map(model);
             repository.Add(entity);

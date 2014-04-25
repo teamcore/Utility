@@ -5,34 +5,43 @@
     $("#grid").kendoGrid({
         dataSource: dataSource,
         height: 380,
-        filterable: false,
+        filterable: true,
         sortable: true,
         pageable: true,
         columns: [
             {
                 field: "Id",
                 title: "ID",
-                width: "140px"
+                width: "140px",
+                filterable: false
             },
             {
                 field: "Name",
                 title: "Range Name"
             },
             {
+                field: "ProjectName",
+                title: "Project Name"
+            },
+            {
                 field: "Min",
-                title: "Minimum Range"
+                title: "Minimum Range",
+                filterable: false
             },
             {
                 field: "Max",
-                title: "Maximun Ranage"
+                title: "Maximun Ranage",
+                filterable: false
             },
             {
                 field: "Next",
-                title: "Next ID"
+                title: "Next ID",
+                filterable: false
             },
             {
                 field: "Description",
-                title: "Description"
+                title: "Description",
+                filterable: false
             },
             {
                 title: "Action",

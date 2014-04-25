@@ -122,6 +122,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/app")
+    <script>
+        var baseUrl = '@Html.BuildUrl("")'
+    </script>
     @RenderSection("scripts", required: false)
 
 </body>

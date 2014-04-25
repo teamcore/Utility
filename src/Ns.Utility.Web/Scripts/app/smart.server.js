@@ -34,7 +34,11 @@ prepareDataSource = function (url) {
         type: "json",
         transport: {
             read: {
-                url: url
+                url: url,
+                contentType: "application/json"
+            },
+            parameterMap: function (data, operation) {
+                return JSON.stringify(data);
             }
         },
         schema: {
@@ -62,7 +66,11 @@ prepareDataSource = function (url, id) {
         transport: {
             read: {
                 url: url,
-                data: { id: id }
+                data: { id: id },
+                contentType: "application/json"
+            },
+            parameterMap: function (data, operation) {
+                return JSON.stringify(data);
             }
         },
         schema: {

@@ -6,23 +6,29 @@
         dataSource: dataSource,
         height: 380,
         pageable: true,
+        filterable: true,
+        sortable:true,
         columns: [
             {
                 field: "Id",
                 title: "Project ID",
-                width: "80px"
+                width: "100px",
+                filterable: false
             },
             {
                 field: "Name",
-                title: "Project Name"
+                title: "Project Name",
+                filterable: true
             },
             {
                 field: "Code",
                 title: "Project Code",
+                    filterable: false
             },
             {
                 field: "Description",
-                title: "Description"
+                title: "Description",
+                filterable: false
             },
             {
                 title: "Action",
@@ -31,5 +37,5 @@
             }
         ]
     });
-    
+
 });

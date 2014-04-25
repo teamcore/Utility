@@ -24,9 +24,16 @@ namespace Ns.Utility.Web.Controllers.Api
             this.rangeRepository = rangeRepository;
         }
 
+        [Route("resource")]
+        public IList<ResourceModel> Get(IList<Resource> resources)
+        {
+
+            return new List<ResourceModel>();
+        }
+
         public override void Post(TermModel model)
         {
-            var range = rangeRepository.FindOne(x => x.ProjectId == model.ProjectId);
+            var range = rangeRepository.Get(model.ProjectId);
             model.Key = range.GetNextId().ToString();
             var entity = mapper.Map(model);
             repository.Add(entity);

@@ -15,9 +15,13 @@ using System.Security.Claims;
 using Ns.Utility.Framework.Settings;
 using Ns.Utility.Core.Model.Membership;
 using Ns.Utility.Framework;
+using Newtonsoft.Json;
+using System.Linq.Dynamic;
+using Kendo.DynamicLinq;
 
 namespace Ns.Utility.Web.Framework.Api
 {
+    [RoutePrefix("api/{controller}")]
     public abstract class ApiControllerBase<TEntity, TModel> : ApiController
         where TEntity : Entity
         where TModel : BaseEntityModel
@@ -59,19 +63,31 @@ namespace Ns.Utility.Web.Framework.Api
         }
 
         [Route("")]
-        public virtual IEnumerable<TModel> Get()
+        public virtual IHttpActionResult Get(HttpRequestMessage requestMessage)
         {
-            var entities = repository.GetAll().OrderByDescending(x => x.Id);
-            var models = mapper.Map(entities);
-            return models;
-        }
+            if (requestMessage.RequestUri.ParseQueryString().Count > 0)
+            {
+                DataSourceRequest request = JsonConvert.DeserializeObject<DataSourceRequest>(requestMessage.RequestUri.ParseQueryString().GetKey(0));
+                var entities = repository.AsQueryable().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Id).ToDataSourceResult(request.Take, request.Skip, request.Sort, request.Filter);
+                var datasource = new DataSourceResult
+                {
+                    Data = mapper.Map((IEnumerable<TEntity>)entities.Data),
+                    Total = entities.Total
+                };
 
-        [Route("{take:int}/{skip:int}/{page:int}/{pageSize:int}")]
-        public virtual KendoResult<TModel> Get(int take, int skip, int page, int pageSize)
-        {
-            var count = repository.AsQueryable().Where(x => x.IsDeleted == false).Count();
-            var entities = repository.AsQueryable().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Id).Skip(skip).Take(take);
-            return new KendoResult<TModel>(mapper.Map(entities), count);
+                return Ok<DataSourceResult>(datasource);
+            }
+            else
+            {
+                var entities = repository.GetAll();
+                if (entities == null)
+                {
+                    return NotFound();
+                }
+
+                var models = mapper.Map(entities);
+                return Ok<IEnumerable<TModel>>(models);
+            }
         }
 
         [Transaction]

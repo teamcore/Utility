@@ -10,6 +10,12 @@ namespace Ns.Utility.Web.Mapper
 {
     public class RangeMapper : CollectionModelMapper<Range, RangeModel>
     {
+        protected override void CreateEntityMap()
+        {
+            AutoMapper.Mapper.CreateMap<RangeModel, Range>()
+                .ForMember(dest => dest.Next, opt => opt.Ignore());
+        }
+
         protected override void CreateEntityUpdateMap()
         {
             AutoMapper.Mapper.CreateMap<Range, Range>()

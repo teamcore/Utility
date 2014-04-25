@@ -48,5 +48,20 @@ DELETE FROM completed_strings WHERE replacement_string_id = {0};";
             script += Environment.NewLine;
             return script;
         }
+
+        public IList<int> GetTermIds()
+        {
+            IList<int> terms = new List<int>();
+            var arr = Text.Split(' ');
+            foreach (var item in arr)
+            {
+                if(item.StartsWith("[") && item.EndsWith("]"))
+                {
+                    terms.Add(Convert.ToInt32(item.Replace("[", "").Replace("]", "")));
+                }
+            }
+
+            return terms;
+        }
     }
 }

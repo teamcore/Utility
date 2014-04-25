@@ -5,7 +5,7 @@
     $("#grid").kendoGrid({
         dataSource: dataSource,
         height: 380,
-        filterable: false,
+        filterable: true,
         sortable: true,
         pageable: true,
         columns: [
@@ -17,7 +17,8 @@
             {
                 field: "Id",
                 title: "ID",
-                width: "140px"
+                width: "140px",
+                filterable: false
             },
             {
                 field: "Key",
@@ -28,8 +29,13 @@
                 title: "Term"
             },
             {
+                field: "ProjectName",
+                title: "Project Name"
+            },
+            {
                 field: "Description",
-                title: "Description"
+                title: "Description",
+                filterable: false
             },
             {
                 title: "Action",
