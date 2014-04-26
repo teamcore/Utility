@@ -30,6 +30,7 @@ DELETE FROM completed_strings WHERE replacement_string_id = {0};";
 
         public int Key { get; private set; }
         public string Text { get; private set; }
+        public string DisplayText { get; private set; }
         public string Description { get; private set; }
         public Project Project { get; private set; }
         public int ProjectId { get; private set; }
@@ -62,6 +63,25 @@ DELETE FROM completed_strings WHERE replacement_string_id = {0};";
             }
 
             return terms;
+        }
+
+        public void ReplaceWithTerm(IDictionary<int, Term> terms)
+        {
+            string termText = string.Empty;
+            var textArr = Text.Split(' ');
+            foreach (var item in textArr)
+            {
+                if (item.StartsWith("[") && item.EndsWith("]"))
+                {
+                    int termId = Convert.ToInt32(item.Replace("[", "").Replace("]", ""));
+                    termText += string.IsNullOrEmpty(termText) ? terms[termId].Text : " " + terms[termId].Text;
+                    continue;
+                }
+
+                termText += string.IsNullOrEmpty(termText) ? item : " " + item;
+            }
+
+            DisplayText = termText;
         }
     }
 }

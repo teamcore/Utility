@@ -22,6 +22,7 @@ namespace Ns.Utility.Web.Models
         [Required]
         [Display(Name = "Resource Text")]
         public string Text { get; set; }
+        public string DisplayText { get; set; }
         public string Description { get; set; }
 
         [Required]

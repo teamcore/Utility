@@ -24,13 +24,6 @@ namespace Ns.Utility.Web.Controllers.Api
             this.rangeRepository = rangeRepository;
         }
 
-        [Route("resource")]
-        public IList<ResourceModel> Get(IList<Resource> resources)
-        {
-
-            return new List<ResourceModel>();
-        }
-
         public override void Post(TermModel model)
         {
             var range = rangeRepository.Get(model.ProjectId);

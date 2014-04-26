@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
-
+    
     var dataSource = prepareDataSource(window.apiUrl);
 
     $("#grid").kendoGrid({
         dataSource: dataSource,
-        height: 380,
+        height: actualViewPort,
         filterable: true,
         sortable: true,
         pageable: true,
@@ -27,6 +27,11 @@
             {
                 field: "Text",
                 title: "Resource Text"
+            },
+            {
+                field: "DisplayText",
+                title: "Display Text",
+                filterable: false
             },
             {
                 field: "ProjectName",
