@@ -43,14 +43,14 @@ prepareDataSource = function (url) {
         },
         schema: {
             data: "Data",
-            total: "Count",
+            total: "Total",
             errors: "error"
         },
         error: function (e) {
             var message = "Http Status Code: " + e.xhr.status + "\nError Message: " + e.xhr.responseText;
             alert(message);
         },
-        pageSize: 10,
+        pageSize: 15,
         serverPaging: true,
         serverFiltering: true,
         serverSorting: true
@@ -75,7 +75,7 @@ prepareDataSource = function (url, id) {
         },
         schema: {
             data: "Data",
-            total: "Count",
+            total: "Total",
             errors: "error"
         },
         error: function (e) {
@@ -83,7 +83,7 @@ prepareDataSource = function (url, id) {
             //Notify("error", e.xhr.statusText, message);
             alert(message);
         },
-        pageSize: 10,
+        pageSize: 15,
         serverPaging: true,
         serverFiltering: true,
         serverSorting: true

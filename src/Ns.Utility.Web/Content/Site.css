@@ -36,6 +36,11 @@ textarea {
     margin-top: 1%;
 }
 
+.view-port {
+    height:75vh;
+    overflow: auto;
+}
+
 .footer-bar p
 {
     margin-top: 4px;

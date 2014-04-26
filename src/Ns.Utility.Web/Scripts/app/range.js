@@ -4,7 +4,7 @@
 
     $("#grid").kendoGrid({
         dataSource: dataSource,
-        height: 380,
+        height: actualViewPort,
         filterable: true,
         sortable: true,
         pageable: true,
