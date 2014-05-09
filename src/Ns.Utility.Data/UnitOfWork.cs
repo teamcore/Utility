@@ -26,7 +26,7 @@ namespace Ns.Utility.Data
         {
             context.SaveChanges();
         }
-        
+
         #endregion
 
         #region IDisposable Members

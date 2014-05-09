@@ -189,6 +189,7 @@
     <Compile Include="Framework\Api\Filters\TransactionAttribute.cs" />
     <Compile Include="Framework\Api\Filters\ValidationFilterAttribute.cs" />
     <Compile Include="Framework\Api\Handler\AuthenticationHandler.cs" />
+    <Compile Include="Framework\Api\Handler\SmartExceptionHandler.cs" />
     <Compile Include="Framework\Kendo\DataSourceRequest.cs" />
     <Compile Include="Framework\Mvc\AdminController.cs" />
     <Compile Include="Framework\Mvc\AuthenticationFilterAttribute.cs" />

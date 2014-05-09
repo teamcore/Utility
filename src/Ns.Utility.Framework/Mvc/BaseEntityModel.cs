@@ -5,7 +5,7 @@ namespace Ns.Utility.Framework.Mvc
     {
         [Display(Name = "ID")]
         public int Id { get; set; }
-        public byte[] Version { get; set; }
+        public byte[] RowVersion { get; set; }
 
         public bool IsNew { get { return Id == 0; } }
     }

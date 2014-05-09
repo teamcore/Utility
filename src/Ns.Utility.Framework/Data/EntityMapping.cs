@@ -12,7 +12,7 @@ namespace Ns.Utility.Framework.Data
         {
             ToTable(pluralizer.Pluralize(typeof(T).Name));
             HasKey(x => x.Id);
-            Property(x => x.Version).IsConcurrencyToken(true).IsRowVersion();
+            Property(x => x.RowVersion).IsConcurrencyToken(true).IsRowVersion();
         }
     }
 }

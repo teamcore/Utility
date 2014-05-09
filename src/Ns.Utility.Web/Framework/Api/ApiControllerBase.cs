@@ -1,23 +1,20 @@
-﻿using System.Linq;
-using System.Web.Http;
+﻿using Kendo.DynamicLinq;
+using Newtonsoft.Json;
+using Ns.Utility.Core.Model.Membership;
+using Ns.Utility.Framework;
 using Ns.Utility.Framework.Data.Contract;
 using Ns.Utility.Framework.DomainModel;
 using Ns.Utility.Framework.Mvc;
-using Ns.Utility.Web.Framework.Api.Filters;
-using Ns.Utility.Web.Framework.Mapper;
-using System.Net.Http;
-using System.Net;
-using Ns.Utility.Web.Framework.Api.ActionResults;
-using System.Collections.Generic;
-using Ns.Utility.Web.Framework.Kendo;
-using Ns.Utility.Web.Framework.Security;
-using System.Security.Claims;
 using Ns.Utility.Framework.Settings;
-using Ns.Utility.Core.Model.Membership;
-using Ns.Utility.Framework;
-using Newtonsoft.Json;
-using System.Linq.Dynamic;
-using Kendo.DynamicLinq;
+using Ns.Utility.Web.Framework.Api.Filters;
+using Ns.Utility.Web.Framework.Kendo;
+using Ns.Utility.Web.Framework.Mapper;
+using Ns.Utility.Web.Framework.Security;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Web.Http;
 
 namespace Ns.Utility.Web.Framework.Api
 {
@@ -101,7 +98,7 @@ namespace Ns.Utility.Web.Framework.Api
         public virtual void Put(TModel model)
         {
             var updatedEntity = mapper.Map(model);
-            var entity = repository.FindOne(x => x.Id == model.Id);
+            var entity = repository.Get(model.Id);
             mapper.Update(updatedEntity, entity);
             repository.Update(entity);
         }
@@ -111,8 +108,8 @@ namespace Ns.Utility.Web.Framework.Api
         {
             if(provider.Settings.SoftDeleteEnabled)
             {
-                var entity = repository.FindOne(x => x.Id == id);
-                entity.IsDeleted = true;
+                var entity = repository.Get(id);
+                entity.Delete();
                 repository.Update(entity);
             }
             else

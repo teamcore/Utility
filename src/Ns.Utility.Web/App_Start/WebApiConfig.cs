@@ -1,8 +1,10 @@
-﻿using Ns.Utility.Web.Framework.Api.Handler;
+﻿using Ns.Utility.Web.Framework.Api.Filters;
+using Ns.Utility.Web.Framework.Api.Handler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 
 namespace Ns.Utility.Web
 {
@@ -12,6 +14,7 @@ namespace Ns.Utility.Web
         {
             // Web API configuration and services
             //config.MessageHandlers.Add(new AuthenticationHandler());
+            config.Services.Replace(typeof(IExceptionHandler), new SmartExceptionHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

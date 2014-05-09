@@ -6,6 +6,7 @@
 <div class="form-top">
     @using (Html.BeginForm("AddEdit", "Project", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
+        @Html.AntiForgeryToken()
         <div class="well well-sm">
             <div class="row">
                 <div class="col-md-12">
@@ -52,7 +53,7 @@
                         @Html.ValidationMessageFor(x => x.Description)
                     </div>
                 </div>
-                @Html.HiddenFor(x => x.Version)
+                @Html.HiddenFor(x => x.RowVersion)
             </div>
         </div>
     }

@@ -30,6 +30,7 @@ namespace Ns.Utility.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddEdit(ProjectModel model)
         {
             bool response = false;

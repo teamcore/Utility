@@ -9,9 +9,8 @@ namespace Ns.Utility.Web.Framework.Security
 {
     public class SmartPrincipal : ClaimsPrincipal, ISmartPrincipal
     {
-        public SmartPrincipal(GenericPrincipal principal)
+        public SmartPrincipal(GenericPrincipal principal) : base(principal.Identities)
         {
-            Identity = principal.Identity;
             UserName = principal.FindFirst(ClaimTypes.Name).Value;
             DisplayName = principal.FindFirst(ClaimTypes.GivenName).Value;
             ProjectName = principal.FindFirst(SmartClaimTypes.ProjectName).Value;
@@ -23,10 +22,5 @@ namespace Ns.Utility.Web.Framework.Security
         public bool IsAdmin { get; private set; }
         public string ProjectName { get; private set; }
         public int? ProjectID { get; private set; }
-        public IIdentity Identity { get; private set; }
-        public bool IsInRole(string role)
-        {
-            return false;
-        }
     }
 }
