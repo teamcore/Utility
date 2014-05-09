@@ -18,5 +18,6 @@ namespace Ns.Utility.Web.Models
         public const string Parameters = "api/parameters";
         public const string Tabs = "api/tabs";
         public const string Groups = "api/groups";
+        public const string Builds = "api/builds";
     }
 }

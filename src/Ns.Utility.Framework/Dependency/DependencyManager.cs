@@ -13,12 +13,13 @@ namespace Ns.Utility.Framework.Dependency
         public virtual void Register(ContainerBuilder builder)
         {
             builder.Register<HttpContextBase>(c => { return HttpContext.Current != null ? new HttpContextWrapper(HttpContext.Current) : (FakeHttpContext.Root() as HttpContextBase); });
-            builder.RegisterType<AppDomainTypeFinder>().As<ITypeFinder>();
-            builder.RegisterGeneric(typeof(ConfigurationProvider<>)).As(typeof(IConfigurationProvider<>));
-            builder.RegisterType<SettingService>().As<ISettingService>();
-            builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>();
-            builder.RegisterType<WebHelper>().As<IWebHelper>();
-            builder.RegisterType<DefaultLogger>().As<ILogger>();
+            builder.RegisterType<AppDomainTypeFinder>().As<ITypeFinder>().SingleInstance();
+            builder.RegisterGeneric(typeof(ConfigurationProvider<>)).As(typeof(IConfigurationProvider<>)).SingleInstance();
+            builder.RegisterType<SettingService>().As<ISettingService>().SingleInstance();
+            builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>().SingleInstance();
+            builder.RegisterType<WebHelper>().As<IWebHelper>().SingleInstance();
+            builder.RegisterType<DefaultLogger>().As<ILogger>().SingleInstance();
+            builder.RegisterType<FileSystemStorageProvider>().As<IStorageProvider>().SingleInstance();
         }
     }
 }

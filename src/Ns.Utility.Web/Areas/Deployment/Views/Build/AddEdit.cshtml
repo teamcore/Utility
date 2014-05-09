@@ -1,0 +1,94 @@
+﻿@model Ns.Utility.Web.Areas.Deployment.Models.BuildModel
+@{
+    ViewBag.Title = "AddEdit";
+}
+
+<div class="form-top">
+    @using (Html.BeginForm("AddEdit", "Build", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <button type="submit" class=" btn btn-sm btn-primary">Submit</button>
+                        @Html.ActionLink("Cancel", "List", "Build", null, new { area = "Deployment", @class = "btn btn-sm btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default view-port">
+            <div class="panel-heading">
+                <h3 class="panel-title">Deployment Build</h3>
+            </div>
+            <div class="panel-body">
+                @if (!Model.IsNew)
+                {
+                    @Html.HiddenFor(x => x.ProjectId)
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Id, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Name, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Enter Range Name" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.ChangeSet, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(x => x.ChangeSet, new { @class = "form-control", placeholder = "Enter Change Set" })
+                        @Html.ValidationMessageFor(x => x.ChangeSet)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Release, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(x => x.Release, new { @class = "form-control", placeholder = "Enter Release Number" })
+                        @Html.ValidationMessageFor(x => x.Release)
+                    </div>
+                </div>
+                @if (!Model.IsNew)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ProjectName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(x => x.ProjectName, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(x => x.ProjectName)
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ProjectId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.DropDownListFor(x => x.ProjectId, Model.Projects.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() }), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.ProjectId)
+                        </div>
+                    </div>
+                }
+
+
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Packages</label>
+                    <div class="col-md-5">
+                        <input type="file" name="Packages[0]" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Scripts</label>
+                    <div class="col-md-5">
+                        <input type="file" name="Scripts[0]" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
