@@ -52,7 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\Core\BuildMap.cs" />
+    <Compile Include="Mapping\Core\FileMap.cs" />
     <Compile Include="Mapping\Core\GroupMap.cs" />
+    <Compile Include="Mapping\Core\PackageMap.cs" />
     <Compile Include="Mapping\Core\ParameterMap.cs" />
     <Compile Include="Mapping\Core\ProjectMap.cs" />
     <Compile Include="Mapping\Core\RangeMap.cs" />

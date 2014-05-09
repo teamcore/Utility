@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Builds\Build.cs" />
+    <Compile Include="Model\Builds\BuildFactory.cs" />
+    <Compile Include="Model\Builds\File.cs" />
+    <Compile Include="Model\Builds\IBuildFactory.cs" />
+    <Compile Include="Model\Builds\Package.cs" />
     <Compile Include="Model\Groups\Group.cs" />
     <Compile Include="Model\Membership\ApplicationSettings.cs" />
     <Compile Include="Model\Membership\ApplicationStartupTask.cs" />
@@ -63,11 +69,11 @@
     <Compile Include="Model\Resources\Term.cs" />
     <Compile Include="Model\Tabs\Tab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\FileUploader.cs" />
+    <Compile Include="Service\IFileUploader.cs" />
+    <Compile Include="Shared\UploadedFile.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-    <Folder Include="Shared\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Ns.Utility.Framework\Ns.Utility.Framework.csproj">
       <Project>{9d0f6e7b-b4df-4242-b5a5-d66a33efbdd7}</Project>

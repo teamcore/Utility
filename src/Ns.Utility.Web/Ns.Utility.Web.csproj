@@ -155,7 +155,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Views\Admin\" />
+    <Folder Include="Areas\Deployment\Views\Shared\" />
     <Folder Include="Views\Utility\" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +166,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\RangesController.cs" />
     <Compile Include="Areas\Admin\Models\RangeModel.cs" />
+    <Compile Include="Areas\Deployment\Controllers\Api\BuildsController.cs" />
+    <Compile Include="Areas\Deployment\DeploymentAreaRegistration.cs" />
+    <Compile Include="Areas\Deployment\Models\BuildModel.cs" />
+    <Compile Include="Areas\Deployment\Controllers\BuildController.cs" />
     <Compile Include="Controllers\Api\ResourcesController.cs" />
     <Compile Include="Controllers\Api\TermsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -492,6 +496,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\kendo\2014.1.318\images\kendoui.woff" />
     <Content Include="Content\kendo\2014.1.318\images\kendoui.ttf" />
+    <Content Include="Areas\Deployment\Views\web.config" />
+    <Content Include="Areas\Deployment\Views\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\SmartContext.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1035,6 +1041,9 @@
     <Content Include="Views\Resource\Preview.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Deployment\Views\Build\AddEdit.cshtml" />
+    <Content Include="Areas\Deployment\Views\Build\List.cshtml" />
+    <Content Include="Areas\Deployment\Views\Build\Preview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ns.Utility.Application\Ns.Utility.Application.csproj">

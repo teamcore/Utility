@@ -25,6 +25,7 @@ using Ns.Utility.Web.Mapper;
 using Ns.Utility.Web.Models;
 using Ns.Utility.Core.Model.Resources;
 using Ns.Utility.Web.Areas.Admin.Models;
+using Ns.Utility.Core.Service;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -47,6 +48,8 @@ namespace Ns.Utility.Web.Framework.Dependency
 
             builder.RegisterType<RangeCreatedHandler>().As<IHandles<RangeCreated>>().SingleInstance();
             builder.RegisterType<SessionHelper>().As<SessionHelper>().SingleInstance();
+            builder.RegisterType<FileUploader>().As<IFileUploader>().SingleInstance();
+           
             //builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(RangeCreatedHandler))).As(typeof(IHandles<>));
         }
     }
