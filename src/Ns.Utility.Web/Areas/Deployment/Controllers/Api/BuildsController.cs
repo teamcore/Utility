@@ -28,13 +28,12 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers.Api
         public override void Post(BuildModel model)
         {
             var entity = mapper.Map(model);
-            repository.Add(entity);
-
             foreach (var package in entity.Packages)
             {
                 package.ExtractFiles();
-                var files = package.Files;
             }
+
+            repository.Add(entity);
         }
     }
 }

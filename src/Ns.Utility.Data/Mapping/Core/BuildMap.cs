@@ -10,5 +10,10 @@ namespace Ns.Utility.Data.Mapping.Core
 {
     public class BuildMap : EntityMapping<Build>
     {
+        public BuildMap() : base()
+        {
+            HasMany(x => x.Packages);
+            HasMany(x => x.Scripts);
+        }
     }
 }
