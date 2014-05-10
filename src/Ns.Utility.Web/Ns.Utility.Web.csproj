@@ -477,6 +477,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\build.js" />
     <Content Include="Scripts\app\kendo.helper.js" />
     <Content Include="Scripts\app\grid.helper.js" />
     <Content Include="Scripts\app\project.js" />

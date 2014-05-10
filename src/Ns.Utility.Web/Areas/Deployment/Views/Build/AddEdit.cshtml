@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-right">
-                        <button type="submit" class=" btn btn-sm btn-primary">Submit</button>
+                        <button id="submit" type="submit" class=" btn btn-sm btn-primary">Submit</button>
                         @Html.ActionLink("Cancel", "List", "Build", null, new { area = "Deployment", @class = "btn btn-sm btn-primary" })
                     </div>
                 </div>
@@ -76,17 +76,30 @@
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">Packages</label>
-                    <div class="col-md-5">
+                    <div id="package-section" class="col-md-5">
                         <input type="file" name="packages" class="form-control" />
+                        <span id="error" class="field-validation-valid"></span>
                     </div>
+                    <a id="addpackage" href="#" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i></a>
+                    <a id="removepackage" href="#" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                 </div>
+
                 <div class="form-group">
                     <label class="col-md-2 control-label">Scripts</label>
-                    <div class="col-md-5">
-                        <input type="file" name="scripts" class="form-control" />
+                    <div id="script-section" class="col-md-5">
+                        <input type="file" name="scripts" class="form-control" accept="application/sql" />
+                        <span id="error" class="field-validation-valid"></span>
                     </div>
+                    <a id="addscript" href="#" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i></a>
+                    <a id="removescript" href="#" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                    
+
                 </div>
             </div>
         </div>
     }
 </div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/build")
+}

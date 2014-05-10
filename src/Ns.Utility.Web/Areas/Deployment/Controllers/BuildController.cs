@@ -66,8 +66,6 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers
                 var file = uploader.Upload(package, model.Release, Path.GetFileName(package.FileName));
                 apiModel.Packages.Add(new PackageModel { Name = file.Name, Path = file.Location });
             }
-            var pdf = apiModel.Packages.FirstOrDefault();
-            var text = PdfHelper.PdfToString(Path.Combine(pdf.Path, pdf.Name));
 
             foreach (var script in model.Scripts)
             {
