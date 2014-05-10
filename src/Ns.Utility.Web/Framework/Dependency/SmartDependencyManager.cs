@@ -26,6 +26,8 @@ using Ns.Utility.Web.Models;
 using Ns.Utility.Core.Model.Resources;
 using Ns.Utility.Web.Areas.Admin.Models;
 using Ns.Utility.Core.Service;
+using Ns.Utility.Core.Model.Builds;
+using Ns.Utility.Web.Areas.Deployment.Models;
 
 namespace Ns.Utility.Web.Framework.Dependency
 {
@@ -45,6 +47,7 @@ namespace Ns.Utility.Web.Framework.Dependency
             builder.RegisterType<ResourceMapper>().As<ICollectionModelMapper<Resource, ResourceModel>>().SingleInstance();
             builder.RegisterType<TermMapper>().As<ICollectionModelMapper<Term, TermModel>>().SingleInstance();
             builder.RegisterType<RangeMapper>().As<ICollectionModelMapper<Range, RangeModel>>().SingleInstance();
+            builder.RegisterType<BuildMapper>().As<ICollectionModelMapper<Build, BuildModel>>().SingleInstance();
 
             builder.RegisterType<RangeCreatedHandler>().As<IHandles<RangeCreated>>().SingleInstance();
             builder.RegisterType<SessionHelper>().As<SessionHelper>().SingleInstance();

@@ -168,8 +168,12 @@
     <Compile Include="Areas\Admin\Models\RangeModel.cs" />
     <Compile Include="Areas\Deployment\Controllers\Api\BuildsController.cs" />
     <Compile Include="Areas\Deployment\DeploymentAreaRegistration.cs" />
+    <Compile Include="Areas\Deployment\Models\Binder\BuildModalBinder.cs" />
     <Compile Include="Areas\Deployment\Models\BuildModel.cs" />
+    <Compile Include="Areas\Deployment\Models\BuildViewModel.cs" />
     <Compile Include="Areas\Deployment\Controllers\BuildController.cs" />
+    <Compile Include="Areas\Deployment\Models\FileModel.cs" />
+    <Compile Include="Areas\Deployment\Models\PackageModel.cs" />
     <Compile Include="Controllers\Api\ResourcesController.cs" />
     <Compile Include="Controllers\Api\TermsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -224,6 +228,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Models\ProjectModel.cs" />
+    <Compile Include="Mapper\BuildMapper.cs" />
     <Compile Include="Mapper\RangeMapper.cs" />
     <Compile Include="Mapper\ResourceMapper.cs" />
     <Compile Include="Mapper\TermMapper.cs" />

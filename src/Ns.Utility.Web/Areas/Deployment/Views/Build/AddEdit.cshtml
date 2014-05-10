@@ -1,10 +1,10 @@
-﻿@model Ns.Utility.Web.Areas.Deployment.Models.BuildModel
+﻿@model Ns.Utility.Web.Areas.Deployment.Models.BuildViewModel
 @{
     ViewBag.Title = "AddEdit";
 }
 
 <div class="form-top">
-    @using (Html.BeginForm("AddEdit", "Build", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("AddEdit", "Build", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         <div class="well well-sm">
             <div class="row">
@@ -74,18 +74,16 @@
                     </div>
                 }
 
-
-
                 <div class="form-group">
                     <label class="col-md-2 control-label">Packages</label>
                     <div class="col-md-5">
-                        <input type="file" name="Packages[0]" class="form-control" />
+                        <input type="file" name="packages" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">Scripts</label>
                     <div class="col-md-5">
-                        <input type="file" name="Scripts[0]" class="form-control" />
+                        <input type="file" name="scripts" class="form-control" />
                     </div>
                 </div>
             </div>

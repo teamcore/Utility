@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Spire.PDF</id>
+    <version>2.9.53</version>
+    <title>Spire.PDF for .NET</title>
+    <authors>Administrator</authors>
+    <owners>Administrator</owners>
+    <licenseUrl>http://www.e-iceblue.com/Knowledgebase/Licensing/License-Agreement.html</licenseUrl>
+    <projectUrl>http://www.e-iceblue.com/Introduce/pdf-for-net-introduce.html</projectUrl>
+    <iconUrl>http://www.e-iceblue.com/images/product_logo/product_buy/pdfnet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Spire.PDF for .NET is a versatile PDF library that enables software developers to generate, edit, read and manipulate PDF files within their own .NET applications. As a standalone PDF component, Spire.PDF for .NET provides users an incredible wealth of features without installing Adobe Acrobat. This component is completely written in C#, but also supports VB.NET, Windows Forms and ASP.NET. 
+With the Spire.PDF for .NET API, you can get the ability to read PDF text and image even attachments with high efficiency. Even the special content such as language written from right to left can be extracted such as Herbrew and Arabic. Other basic features such as text, image, table, shapes, hyperlinks, bookmark, headings, footnotes, lists, form fields, pagination, booklet barcode, attachments, transparency, annotations, actions, overlay etc all work great for users. As for security, Spire.PDF for .NET enables you to protect your PDF files by passwords and digital signature.</description>
+    <summary>This package is designed to introduce developers a .NET PDF application Spire.PDF for .NET. This PDF application enables users to create, read, edit and maniplate PDF files with high efficiency.</summary>
+    <releaseNotes>Spire.PDF 2.9.51--When convert XPS to PDF, the error of missing letters has been fixed.
+
+Spire.PDF 2.9.43 this time offers you a smooth experience with extract image from PDF file. 
+Bug solutions:
+
+    Fixed a bug that PdfPageBase.ExtractImages() method did not refresh the image list after adding new images to PDF.
+    Fixed a bug that the pixel of the extracted images using PdfPageBase.ExtractImages() method was changed.</releaseNotes>
+    <copyright>Copyright © 2014 e-iceblue. All Rights Reserved.</copyright>
+    <language>en-US</language>
+    <tags>PDF application PDF library component control to XPS Image HTML HTML PDF PDF/A</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Spire.PDF" targetFramework=".NETFramework2.0, .NETFramework3.5, .NETFramework4.0, .NETFramework4.0-Client" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

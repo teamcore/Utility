@@ -106,11 +106,9 @@ namespace Ns.Utility.Framework.IO
         }
 
         public void CreateFolder(string path) {
-            if (Directory.Exists(Map(path))) {
-                throw new ArgumentException("Directory " + path + " already exists");
+            if (!Directory.Exists(Map(path))) {
+                Directory.CreateDirectory(Map(path));
             }
-
-            Directory.CreateDirectory(Map(path));
         }
 
         public void DeleteFolder(string path) {

@@ -71,7 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\FileUploader.cs" />
     <Compile Include="Service\IFileUploader.cs" />
-    <Compile Include="Shared\UploadedFile.cs" />
+    <Compile Include="Shared\FileResult.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

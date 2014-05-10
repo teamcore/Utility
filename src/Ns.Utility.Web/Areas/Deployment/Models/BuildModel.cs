@@ -1,5 +1,4 @@
 ﻿using Ns.Utility.Framework.Mvc;
-using Ns.Utility.Web.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,8 @@ namespace Ns.Utility.Web.Areas.Deployment.Models
     {
         public BuildModel()
         {
-            Projects = new List<ProjectModel>();
-            Packages = new List<HttpPostedFile>();
-            Scripts = new List<HttpPostedFile>();
+            Packages = new List<PackageModel>();
+            Scripts = new List<FileModel>();
         }
 
         public string Name { get; set; }
@@ -21,8 +19,8 @@ namespace Ns.Utility.Web.Areas.Deployment.Models
         public string Release { get; set; }
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
-        public List<ProjectModel> Projects { get; set; }
-        public IList<HttpPostedFile> Packages { get; set; }
-        public IList<HttpPostedFile> Scripts { get; set; }
+
+        public IList<PackageModel> Packages { get; set; }
+        public IList<FileModel> Scripts { get; set; }
     }
 }

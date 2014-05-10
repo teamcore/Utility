@@ -35,6 +35,7 @@ namespace Ns.Utility.Core.Model.Membership
             UserName = userName;
             FirstName = firstName;
             LastName = LastName;
+            IsAdmin = true;
             settings = EngineContext.Current.Resolve<IConfigurationProvider<ApplicationSettings>>().Settings;
         }
 

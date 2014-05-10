@@ -67,6 +67,12 @@
     <Reference Include="Security.Cryptography">
       <HintPath>..\packages\clrsecurity\Security.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.License">
+      <HintPath>..\packages\Spire.PDF.2.9.53\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf">
+      <HintPath>..\packages\Spire.PDF.2.9.53\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -184,6 +190,7 @@
     <Compile Include="Helper\DateTimeHelper.cs" />
     <Compile Include="Helper\EnumHelper.cs" />
     <Compile Include="Helper\NumericHelper.cs" />
+    <Compile Include="Helper\PdfHelper.cs" />
     <Compile Include="Helper\ReflectionHelper.cs" />
     <Compile Include="Helper\SecurityHelper.cs" />
     <Compile Include="Helper\Serializer.cs" />

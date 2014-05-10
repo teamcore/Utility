@@ -11,7 +11,6 @@ namespace Ns.Utility.Core.Service
 {
     public interface IFileUploader
     {
-        UploadedFile Upload(HttpPostedFile file, string directoryName, string fileName);
-        UploadedFile Upload(Stream stream, int contentLength, string contentType, string directoryName, string fileName, string originalFileName);
+        FileResult Upload(HttpPostedFileBase file, string directoryName, string fileName);
     }
 }
