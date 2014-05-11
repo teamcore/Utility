@@ -92,6 +92,12 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers
             return View(model);
         }
 
+        public ActionResult Process(int id)
+        {
+            var model = new ProcessModel { BuildName = "Nirajan" };
+            return View(model);
+        }
+
         public ActionResult Preview(int id)
         {
             return View();

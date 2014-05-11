@@ -74,10 +74,31 @@
     <Reference Include="Kendo.DynamicLinq">
       <HintPath>..\packages\Kendo.DynamicLinq.1.0.1.0\lib\net40\Kendo.DynamicLinq.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.0.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.0.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WebSockets">
+      <HintPath>..\packages\Microsoft.WebSockets.0.2.3\lib\net45\Microsoft.WebSockets.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -162,18 +183,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Api\RangesController.cs" />
     <Compile Include="Areas\Admin\Models\RangeModel.cs" />
     <Compile Include="Areas\Deployment\Controllers\Api\BuildsController.cs" />
+    <Compile Include="Areas\Deployment\Controllers\Api\BuildProcessController.cs" />
     <Compile Include="Areas\Deployment\DeploymentAreaRegistration.cs" />
-    <Compile Include="Areas\Deployment\Models\Binder\BuildModalBinder.cs" />
     <Compile Include="Areas\Deployment\Models\BuildModel.cs" />
     <Compile Include="Areas\Deployment\Models\BuildViewModel.cs" />
     <Compile Include="Areas\Deployment\Controllers\BuildController.cs" />
     <Compile Include="Areas\Deployment\Models\FileModel.cs" />
     <Compile Include="Areas\Deployment\Models\PackageModel.cs" />
+    <Compile Include="Areas\Deployment\Models\ProcessModel.cs" />
+    <Compile Include="Areas\Deployment\Models\ProgressTicker.cs" />
+    <Compile Include="Areas\Deployment\ProgressHub.cs" />
     <Compile Include="Controllers\Api\ResourcesController.cs" />
     <Compile Include="Controllers\Api\TermsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -478,6 +503,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\build.js" />
+    <Content Include="Scripts\app\buildprocess.js" />
     <Content Include="Scripts\app\kendo.helper.js" />
     <Content Include="Scripts\app\grid.helper.js" />
     <Content Include="Scripts\app\project.js" />
@@ -504,6 +530,7 @@
     <Content Include="Content\kendo\2014.1.318\images\kendoui.ttf" />
     <Content Include="Areas\Deployment\Views\web.config" />
     <Content Include="Areas\Deployment\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Deployment\Views\Build\Process.cshtml" />
     <None Include="Properties\PublishProfiles\SmartContext.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -512,6 +539,8 @@
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.signalR-2.0.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.0.3.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

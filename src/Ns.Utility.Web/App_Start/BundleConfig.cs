@@ -37,6 +37,8 @@ namespace Ns.Utility.Web
             bundles.Add(new ScriptBundle("~/bundles/resource.addedit").Include("~/Scripts/app/resource.addedit.js"));
             bundles.Add(new ScriptBundle("~/bundles/preview").Include("~/Scripts/app/preview.js"));
             bundles.Add(new ScriptBundle("~/bundles/build").Include("~/Scripts/app/build.js"));
+            bundles.Add(new ScriptBundle("~/bundles/buildprocess").Include("~/Scripts/app/buildprocess.js"));
+            bundles.Add(new ScriptBundle("~/bundles/hub").Include("~/Scripts/jquery.signalR-2.0.3.js", "~/signalr/hubs"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

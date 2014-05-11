@@ -2,7 +2,6 @@
 using Ns.Utility.Core.Service;
 using Ns.Utility.Framework.Data.Contract;
 using Ns.Utility.Web.Areas.Deployment.Models;
-using Ns.Utility.Web.Areas.Deployment.Models.Binder;
 using Ns.Utility.Web.Framework.Api;
 using Ns.Utility.Web.Framework.Mapper;
 using System;
