@@ -19,6 +19,6 @@ namespace Ns.Utility.Web.Models
         public const string Tabs = "api/tabs";
         public const string Groups = "api/groups";
         public const string Builds = "api/builds";
-        public const string BuildsUpload = "api/builds/upload";
+        public const string BuildsProcess = "api/builds/process";
     }
 }

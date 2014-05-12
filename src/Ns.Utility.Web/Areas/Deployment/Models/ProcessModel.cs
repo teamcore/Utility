@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Ns.Utility.Web.Areas.Deployment.Models
 {
-    public class ProcessModel : BaseModel
+    public class ProcessModel : BaseEntityModel
     {
         public string BuildName { get; set; }
     }

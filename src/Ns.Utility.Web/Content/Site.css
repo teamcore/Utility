@@ -41,6 +41,11 @@ textarea {
     overflow: auto;
 }
 
+.progress-view {
+    height:200px;
+    overflow: auto;
+}
+
 .footer-bar p
 {
     margin-top: 4px;

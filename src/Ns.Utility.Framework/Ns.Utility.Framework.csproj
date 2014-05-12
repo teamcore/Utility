@@ -214,7 +214,9 @@
     <Compile Include="Notifications\EmailAccount.cs" />
     <Compile Include="Notifications\EmailSender.cs" />
     <Compile Include="Notifications\IEmailSender.cs" />
+    <Compile Include="Notifications\NotificationHandler.cs" />
     <Compile Include="Notifications\QueuedEmail.cs" />
+    <Compile Include="Notifications\Unsubscriber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EncodingHelper.cs" />
     <Compile Include="Security\EncryptedPayload.cs" />

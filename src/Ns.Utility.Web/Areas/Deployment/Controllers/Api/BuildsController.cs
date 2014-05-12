@@ -18,10 +18,12 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers.Api
     [RoutePrefix("api/builds")]
     public class BuildsController : ApiControllerBase<Build, BuildModel>
     {
-        public BuildsController(IRepository<Build> repository, ICollectionModelMapper<Build, BuildModel> mapper)
+        IRepository<Package> packageRepository;
+
+        public BuildsController(IRepository<Build> repository, IRepository<Package> packageRepository, ICollectionModelMapper<Build, BuildModel> mapper)
             : base(repository, mapper)
         {
-            
+            this.packageRepository = packageRepository;
         }
 
         public override void Post(BuildModel model)
@@ -29,10 +31,27 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers.Api
             var entity = mapper.Map(model);
             foreach (var package in entity.Packages)
             {
-                package.ExtractFiles();
+                package.AssociateToBuild(entity.Id);
+            }
+
+            foreach (var script in entity.Scripts)
+            {
+                script.AssociateToBuild(entity.Id);
             }
 
             repository.Add(entity);
+        }
+
+        [Route("process")]
+        public void Post(ProcessModel model)
+        {
+            //var entity = repository.Get(model.Id);
+            var packages = packageRepository.Find(x => x.BuildId == model.Id);
+            foreach (var package in packages)
+            {
+                package.ExtractFiles();
+                packageRepository.Update(package);
+            }
         }
     }
 }

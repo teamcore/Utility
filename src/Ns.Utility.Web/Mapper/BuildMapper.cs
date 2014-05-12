@@ -19,6 +19,15 @@ namespace Ns.Utility.Web.Mapper
             AutoMapper.Mapper.CreateMap<FileModel, File>();
         }
 
+        protected override void CreateModelMap()
+        {
+            AutoMapper.Mapper.CreateMap<Build, BuildModel>()
+                .ForMember(dest => dest.Packages, opt => opt.Ignore())
+                .ForMember(dest => dest.Scripts, opt => opt.Ignore());
+            AutoMapper.Mapper.CreateMap<Package, PackageModel>();
+            AutoMapper.Mapper.CreateMap<File, FileModel>();
+        }
+
         protected override void CreateEntityUpdateMap()
         {
             AutoMapper.Mapper.CreateMap<Build, Build>()
@@ -46,6 +55,24 @@ namespace Ns.Utility.Web.Mapper
             }
 
             return build;
+        }
+
+        protected override BuildModel Mapping(Build entity)
+        {
+            var model = base.Mapping(entity);
+            var packages = AutoMapper.Mapper.Map<ICollection<Package>, ICollection<PackageModel>>(entity.Packages);
+            foreach (var package in packages)
+            {
+                model.Packages.Add(package);
+            }
+
+            var scripts = AutoMapper.Mapper.Map<ICollection<File>, ICollection<FileModel>>(entity.Scripts);
+            foreach (var script in scripts)
+            {
+                model.Scripts.Add(script);
+            }
+
+            return model;
         }
     }
 }

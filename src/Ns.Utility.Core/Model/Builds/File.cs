@@ -9,7 +9,12 @@ namespace Ns.Utility.Core.Model.Builds
 {
     public class File : Entity
     {
-        public File(string name, string extension, string relativePath)
+        protected File()
+        {
+
+        }
+
+        internal File(string name, string extension, string relativePath)
         {
             Name = name;
             Extension = extension;
@@ -19,5 +24,14 @@ namespace Ns.Utility.Core.Model.Builds
         public string Name { get; private set; }
         public string Extension { get; private set; }
         public string RelativePath { get; private set; }
+        public int BuildId { get; private set; }
+        public Build Build { get; private set; }
+        public int PackageId { get; private set; }
+        public Package Package { get; private set; }
+
+        public void AssociateToBuild(int buildId)
+        {
+            BuildId = buildId;
+        }
     }
 }

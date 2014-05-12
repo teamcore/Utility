@@ -35,12 +35,12 @@ create table [dbo].[Files] (
     [Name] [nvarchar](50) null,
     [Extension] [nvarchar](250) null,
     [RelativePath] [nvarchar](250) null,
+    [BuildId] [int] not null,
+    [PackageId] [int] not null,
     [IsDeleted] [bit] not null,
     [DeletedOn] [datetime] null,
     [DeletedBy] [nvarchar](250) null,
     [RowVersion] [rowversion] not null,
-    [Package_Id] [int] null,
-    [Build_Id] [int] null,
     primary key ([Id])
 );
 create table [dbo].[Groups] (
@@ -76,11 +76,11 @@ create table [dbo].[Packages] (
     [Path] [nvarchar](250) null,
     [Size] [real] not null,
     [Description] [nvarchar](2000) null,
+    [BuildId] [int] not null,
     [IsDeleted] [bit] not null,
     [DeletedOn] [datetime] null,
     [DeletedBy] [nvarchar](250) null,
     [RowVersion] [rowversion] not null,
-    [Build_Id] [int] null,
     primary key ([Id])
 );
 create table [dbo].[Parameters] (
@@ -234,10 +234,10 @@ create table [dbo].[Users] (
     [RowVersion] [rowversion] not null,
     primary key ([Id])
 );
-alter table [dbo].[Packages] add constraint [Build_Packages] foreign key ([Build_Id]) references [dbo].[Builds]([Id]);
+alter table [dbo].[Packages] add constraint [Build_Packages] foreign key ([BuildId]) references [dbo].[Builds]([Id]);
 alter table [dbo].[Builds] add constraint [Build_Project] foreign key ([ProjectId]) references [dbo].[Projects]([Id]) on delete cascade;
-alter table [dbo].[Files] add constraint [Build_Scripts] foreign key ([Build_Id]) references [dbo].[Builds]([Id]);
-alter table [dbo].[Files] add constraint [Package_Files] foreign key ([Package_Id]) references [dbo].[Packages]([Id]);
+alter table [dbo].[Files] add constraint [Build_Scripts] foreign key ([BuildId]) references [dbo].[Builds]([Id]);
+alter table [dbo].[Files] add constraint [File_Package] foreign key ([PackageId]) references [dbo].[Packages]([Id]) on delete cascade;
 alter table [dbo].[Parameters] add constraint [Parameter_Group] foreign key ([GroupId]) references [dbo].[Groups]([Id]) on delete cascade;
 alter table [dbo].[Parameters] add constraint [Parameter_Resource] foreign key ([ResourceId]) references [dbo].[Resources]([Id]) on delete cascade;
 alter table [dbo].[Ranges] add constraint [Range_Project] foreign key ([ProjectId]) references [dbo].[Projects]([Id]) on delete cascade;

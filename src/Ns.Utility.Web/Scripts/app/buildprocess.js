@@ -26,14 +26,12 @@ $(document).ready(function () {
         var ticker = $.connection.Progress;
 
         function init() {
-            ticker.server.show().done(function (message) {
-                $("#messages").prepend('<li>' + htmlEncode(message) + '</li>');
-            });
+            ticker.server.initialize();
         }
 
         // Add a client-side hub method that the server will call
         ticker.client.show = function (message) {
-            $("#messages").prepend('<li>' + htmlEncode(message) + '</li>');
+            $("#messages").prepend('<li>' + htmlEncode(message) + '</li>').slideDown("slow");
         }
 
         // Start the connection
@@ -45,4 +43,11 @@ $(document).ready(function () {
         var encodedValue = $('<div />').text(value).html();
         return encodedValue;
     }
+
+    $("#submit").click(function () {
+        var id = $("#Id").val();
+        var name = $("#BuildName").val();
+        executeOnServer({ Id: id, Name: name }, apiUrl, 'POST', null, null);
+        return false;
+    });
 });

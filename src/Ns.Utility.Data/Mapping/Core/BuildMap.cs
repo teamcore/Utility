@@ -12,8 +12,7 @@ namespace Ns.Utility.Data.Mapping.Core
     {
         public BuildMap() : base()
         {
-            HasMany(x => x.Packages);
-            HasMany(x => x.Scripts);
+            
         }
     }
 }

@@ -92,9 +92,17 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers
             return View(model);
         }
 
-        public ActionResult Process(int id)
+        public async Task<ActionResult> Process(int id)
         {
-            var model = new ProcessModel { BuildName = "Nirajan" };
+            var model = new ProcessModel();
+            var buildModel = await ApiUtility.GetAsyncById<BuildModel>(Services.Builds, id);
+            if(buildModel != null)
+            {
+                model.BuildName = buildModel.Name;
+                model.Id = id;
+            }
+
+            //var response = await ApiUtility.PostAsync<ProcessModel>(Services.BuildsProcess, model);
             return View(model);
         }
 

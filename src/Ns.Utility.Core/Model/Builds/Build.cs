@@ -10,14 +10,19 @@ namespace Ns.Utility.Core.Model.Builds
 {
     public class Build : Entity
     {
-        public Build(string name, string changeSet, string release, int projectId)
+        protected Build()
+        {
+
+        }
+
+        internal Build(string name, string changeSet, string release, int projectId)
         {
             Name = name;
             ChangeSet = changeSet;
             Release = release;
             ProjectId = projectId;
-            Packages = new List<Package>();
-            Scripts = new List<File>();
+            Packages = new HashSet<Package>();
+            Scripts = new HashSet<File>();
         }
 
         public string Name { get; private set; }
@@ -25,7 +30,7 @@ namespace Ns.Utility.Core.Model.Builds
         public string Release { get; private set; }
         public int ProjectId { get; private set; }
         public Project Project { get; private set; }
-        public IList<Package> Packages { get; private set; }
-        public IList<File> Scripts { get; private set; }
+        public ICollection<Package> Packages { get; private set; }
+        public ICollection<File> Scripts { get; private set; }
     }
 }

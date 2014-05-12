@@ -10,5 +10,9 @@ namespace Ns.Utility.Data.Mapping.Core
 {
     public class PackageMap : EntityMapping<Package>
     {
+        public PackageMap()
+        {
+            HasRequired(x => x.Build).WithMany(x => x.Packages).HasForeignKey(x => x.BuildId);
+        }
     }
 }

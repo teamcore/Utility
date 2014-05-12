@@ -5,8 +5,9 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using Ns.Utility.Web.Areas.Deployment.Models;
 using Microsoft.AspNet.SignalR.Hubs;
+using Ns.Utility.Core.Service;
 
-namespace Ns.Utility.Web.Areas.Deployment
+namespace Ns.Utility.Web.Areas.Deployment.Hubs
 {
     [HubName("Progress")]
     public class ProgressHub : Hub
@@ -22,9 +23,9 @@ namespace Ns.Utility.Web.Areas.Deployment
             this.progress = progress;
         }
 
-        public string Show()
+        public void Initialize()
         {
-            return progress.Initialize();
+            progress.Initialize();
         }
     }
 }

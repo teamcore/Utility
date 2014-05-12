@@ -10,5 +10,10 @@ namespace Ns.Utility.Data.Mapping.Core
 {
     public class FileMap : EntityMapping<File>
     {
+        public FileMap()
+        {
+            HasRequired(x => x.Build).WithMany(x => x.Scripts).HasForeignKey(x => x.BuildId);
+            HasRequired(x => x.Package).WithMany(x => x.Files).HasForeignKey(x => x.PackageId).WillCascadeOnDelete(false);
+        }
     }
 }
