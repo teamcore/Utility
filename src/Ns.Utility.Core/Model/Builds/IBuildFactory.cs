@@ -10,7 +10,7 @@ namespace Ns.Utility.Core.Model.Builds
     {
         Build CreateBuild(string name, string changeSet, string release, int projectId);
 
-        Package CreatePackage(string name, string path, float size, string description = "");
+        Package CreatePackage(string name, string path, string description = "");
 
         File CreateFile(string name, string extension, string relativePath);
     }

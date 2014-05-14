@@ -12,7 +12,7 @@ namespace Ns.Utility.Data.Mapping.Core
     {
         public PackageMap()
         {
-            HasRequired(x => x.Build).WithMany(x => x.Packages).HasForeignKey(x => x.BuildId);
+            HasRequired(x => x.Build).WithMany(x => x.Packages).HasForeignKey(x => x.BuildId).WillCascadeOnDelete(false);
         }
     }
 }

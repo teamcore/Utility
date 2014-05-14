@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Principal;
 
 namespace Ns.Utility.Framework.DomainModel
@@ -36,6 +37,7 @@ namespace Ns.Utility.Framework.DomainModel
         /// <value>
         /// The version.
         /// </value>
+        [Timestamp] 
         public byte[] RowVersion { get; private set; }
 
         /// <summary>

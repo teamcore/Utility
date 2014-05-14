@@ -13,9 +13,9 @@ namespace Ns.Utility.Core.Model.Builds
             return new Build(name, changeSet, release, projectId);
         }
 
-        public Package CreatePackage(string name, string path, float size, string description = "")
+        public Package CreatePackage(string name, string path, string description = "")
         {
-            return new Package(name, path, size, description);
+            return new Package(name, path, description);
         }
 
         public File CreateFile(string name, string extension, string relativePath)

@@ -47,6 +47,7 @@
     <Compile Include="Model\Builds\File.cs" />
     <Compile Include="Model\Builds\IBuildFactory.cs" />
     <Compile Include="Model\Builds\Package.cs" />
+    <Compile Include="Model\Builds\Script.cs" />
     <Compile Include="Model\Groups\Group.cs" />
     <Compile Include="Model\Membership\ApplicationSettings.cs" />
     <Compile Include="Model\Membership\ApplicationStartupTask.cs" />

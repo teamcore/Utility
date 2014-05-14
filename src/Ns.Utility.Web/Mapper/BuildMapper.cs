@@ -16,16 +16,17 @@ namespace Ns.Utility.Web.Mapper
                 .ForMember(dest => dest.Packages, opt => opt.Ignore())
                 .ForMember(dest => dest.Scripts, opt => opt.Ignore());
             AutoMapper.Mapper.CreateMap<PackageModel, Package>();
-            AutoMapper.Mapper.CreateMap<FileModel, File>();
+            AutoMapper.Mapper.CreateMap<SqlScriptModel, Script>();
         }
 
         protected override void CreateModelMap()
         {
             AutoMapper.Mapper.CreateMap<Build, BuildModel>()
+                .ForMember(dest => dest.ProjectName, opt => opt.MapFrom(src => src.Project.Name))
                 .ForMember(dest => dest.Packages, opt => opt.Ignore())
                 .ForMember(dest => dest.Scripts, opt => opt.Ignore());
             AutoMapper.Mapper.CreateMap<Package, PackageModel>();
-            AutoMapper.Mapper.CreateMap<File, FileModel>();
+            AutoMapper.Mapper.CreateMap<Script, SqlScriptModel>();
         }
 
         protected override void CreateEntityUpdateMap()
@@ -36,19 +37,19 @@ namespace Ns.Utility.Web.Mapper
                 .ForMember(dest => dest.Packages, opt => opt.Ignore())
                 .ForMember(dest => dest.Scripts, opt => opt.Ignore());
             AutoMapper.Mapper.CreateMap<Package, Package>();
-            AutoMapper.Mapper.CreateMap<File, File>();
+            AutoMapper.Mapper.CreateMap<Script, Script>();
         }
 
         protected override Build Mapping(BuildModel model)
         {
             Build build = base.Mapping(model);
-            var packages = AutoMapper.Mapper.Map<IList<PackageModel>, IList<Package>>(model.Packages);
+            var packages = AutoMapper.Mapper.Map<ICollection<PackageModel>, ICollection<Package>>(model.Packages);
             foreach (var package in packages)
             {
                 build.Packages.Add(package);
             }
 
-            var scripts = AutoMapper.Mapper.Map<IList<FileModel>, IList<File>>(model.Scripts);
+            var scripts = AutoMapper.Mapper.Map<ICollection<SqlScriptModel>, ICollection<Script>>(model.Scripts);
             foreach (var script in scripts)
             {
                 build.Scripts.Add(script);
@@ -66,7 +67,7 @@ namespace Ns.Utility.Web.Mapper
                 model.Packages.Add(package);
             }
 
-            var scripts = AutoMapper.Mapper.Map<ICollection<File>, ICollection<FileModel>>(entity.Scripts);
+            var scripts = AutoMapper.Mapper.Map<ICollection<Script>, ICollection<SqlScriptModel>>(entity.Scripts);
             foreach (var script in scripts)
             {
                 model.Scripts.Add(script);

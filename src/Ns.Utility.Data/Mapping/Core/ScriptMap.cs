@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Ns.Utility.Data.Mapping.Core
 {
-    public class FileMap : EntityMapping<File>
+    public class ScriptMap : EntityMapping<Script>
     {
-        public FileMap()
+        public ScriptMap()
         {
-            HasRequired(x => x.Build).WithMany(x => x.Files).HasForeignKey(x => x.BuildId).WillCascadeOnDelete(false);
+            HasRequired(x => x.Build).WithMany(x => x.Scripts).HasForeignKey(x => x.BuildId).WillCascadeOnDelete(false);
         }
     }
 }

@@ -199,6 +199,7 @@
     <Compile Include="Areas\Deployment\Models\ProcessModel.cs" />
     <Compile Include="Areas\Deployment\Models\ProgressTicker.cs" />
     <Compile Include="Areas\Deployment\Hubs\ProgressHub.cs" />
+    <Compile Include="Areas\Deployment\Models\SqlScriptModel.cs" />
     <Compile Include="Controllers\Api\ResourcesController.cs" />
     <Compile Include="Controllers\Api\TermsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />

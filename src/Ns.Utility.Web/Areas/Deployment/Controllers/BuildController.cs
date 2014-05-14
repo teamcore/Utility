@@ -61,16 +61,17 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers
 
             #region Upload Files
 
+            string directoryName = string.Format("{0}-{1}-{2}", model.ProjectName, model.Release, model.ChangeSet);
             foreach (var package in model.Packages)
             {
-                var file = uploader.Upload(package, model.Release, Path.GetFileName(package.FileName));
+                var file = uploader.Upload(package, directoryName, Path.GetFileName(package.FileName));
                 apiModel.Packages.Add(new PackageModel { Name = file.Name, Path = file.Location });
             }
 
             foreach (var script in model.Scripts)
             {
-                var file = uploader.Upload(script, model.Release, Path.GetFileName(script.FileName));
-                apiModel.Scripts.Add(new FileModel { Name = file.Name, Extension = file.Extension, RelativePath = file.Location });
+                var file = uploader.Upload(script, directoryName, Path.GetFileName(script.FileName));
+                apiModel.Scripts.Add(new SqlScriptModel { Name = file.Name, Extension = file.Extension, Path = file.Location });
             }
 
             #endregion
@@ -94,15 +95,7 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers
 
         public async Task<ActionResult> Process(int id)
         {
-            var model = new ProcessModel();
-            var buildModel = await ApiUtility.GetAsyncById<BuildModel>(Services.Builds, id);
-            if(buildModel != null)
-            {
-                model.BuildName = buildModel.Name;
-                model.Id = id;
-            }
-
-            //var response = await ApiUtility.PostAsync<ProcessModel>(Services.BuildsProcess, model);
+            var model = await ApiUtility.GetAsyncById<BuildModel>(Services.Builds, id);
             return View(model);
         }
 

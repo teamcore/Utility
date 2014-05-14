@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Ns.Utility.Core.Model.Builds
 {
-    public class File : Entity
+    public class Script : Entity
     {
-        protected File()
+        protected Script() : this(string.Empty, string.Empty, string.Empty)
         {
 
         }
 
-        internal File(string name, string extension, string relativePath)
+        internal Script(string name, string extension, string path)
         {
             Name = name;
             Extension = extension;
-            RelativePath = relativePath;
+            Path = path;
         }
 
         public string Name { get; private set; }
         public string Extension { get; private set; }
-        public string RelativePath { get; private set; }
+        public string Path { get; private set; }
         public int BuildId { get; private set; }
         public Build Build { get; private set; }
 

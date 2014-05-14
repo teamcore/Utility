@@ -10,8 +10,8 @@ namespace Ns.Utility.Web.Areas.Deployment.Models
     {
         public BuildModel()
         {
-            Packages = new List<PackageModel>();
-            Scripts = new List<FileModel>();
+            Packages = new HashSet<PackageModel>();
+            Scripts = new HashSet<SqlScriptModel>();
         }
 
         public string Name { get; set; }
@@ -20,7 +20,7 @@ namespace Ns.Utility.Web.Areas.Deployment.Models
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
 
-        public IList<PackageModel> Packages { get; set; }
-        public IList<FileModel> Scripts { get; set; }
+        public ICollection<PackageModel> Packages { get; set; }
+        public ICollection<SqlScriptModel> Scripts { get; set; }
     }
 }

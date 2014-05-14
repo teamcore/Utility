@@ -7,23 +7,23 @@ using Ns.Utility.Web.Framework.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using System.Data.Entity;
 
 namespace Ns.Utility.Web.Areas.Deployment.Controllers.Api
 {
     [RoutePrefix("api/builds")]
     public class BuildsController : ApiControllerBase<Build, BuildModel>
     {
-        IRepository<Package> packageRepository;
-
-        public BuildsController(IRepository<Build> repository, IRepository<Package> packageRepository, ICollectionModelMapper<Build, BuildModel> mapper)
+        public BuildsController(IRepository<Build> repository, ICollectionModelMapper<Build, BuildModel> mapper)
             : base(repository, mapper)
         {
-            this.packageRepository = packageRepository;
+            
         }
 
         public override void Post(BuildModel model)
@@ -43,15 +43,11 @@ namespace Ns.Utility.Web.Areas.Deployment.Controllers.Api
         }
 
         [Route("process")]
-        public void Post(ProcessModel model)
+        public void PostProcess(BuildModel model)
         {
-            //var entity = repository.Get(model.Id);
-            var packages = packageRepository.Find(x => x.BuildId == model.Id);
-            foreach (var package in packages)
-            {
-                package.ExtractFiles();
-                packageRepository.Update(package);
-            }
+            var entity = repository.AsQueryable().Include(x => x.Packages).FirstOrDefault(x => x.Id == model.Id);
+            entity.BuildFileList();
+            repository.Update(entity);
         }
     }
 }

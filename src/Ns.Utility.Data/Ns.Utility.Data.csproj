@@ -60,6 +60,7 @@
     <Compile Include="Mapping\Core\ProjectMap.cs" />
     <Compile Include="Mapping\Core\RangeMap.cs" />
     <Compile Include="Mapping\Core\ResourceMap.cs" />
+    <Compile Include="Mapping\Core\ScriptMap.cs" />
     <Compile Include="Mapping\Core\TabMap.cs" />
     <Compile Include="Mapping\Core\TermMap.cs" />
     <Compile Include="Mapping\Core\UserMap.cs" />
